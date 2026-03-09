@@ -23,7 +23,6 @@ import {
 import type { UploadFile } from 'antd/es/upload/interface'
 import dayjs from 'dayjs'
 import { useThemeStore } from '@shared/store'
-import { useTranslation } from 'react-i18next'
 import type { ProjectStatus } from '@shared/types'
 import styles from './CreateProjectModal.module.css'
 
@@ -56,7 +55,6 @@ const projectTypes = [
 ]
 
 export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectModalProps) {
-  useTranslation() // Initialize i18n context
   const { isDark } = useThemeStore()
   const [form] = Form.useForm<ProjectFormValues>()
   const [currentStep, setCurrentStep] = useState(0)
@@ -125,7 +123,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 {projectTypes.map((type) => (
                   <div
                     key={type.value}
-                    className={`${styles.typeCard} ${projectType === type.value ? styles.selected : ''} ${isDark ? styles.dark : ''}`}
+                    className={`${styles.typeCard} ${projectType === type.value ? styles.selected : ''}`}
                     onClick={() => setProjectType(type.value)}
                   >
                     <div className={styles.typeIcon}>{type.icon}</div>
@@ -144,7 +142,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 <Input
                   placeholder="например, ЖК «Солнечный»"
                   size="large"
-                  className={`${styles.input} ${isDark ? styles.dark : ''}`}
+                  className={styles.input}
                   prefix={<ProjectOutlined className={styles.inputIcon} />}
                 />
               </div>
@@ -159,7 +157,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 <Input.TextArea
                   placeholder="Краткое описание проекта..."
                   rows={3}
-                  className={`${styles.textarea} ${isDark ? styles.dark : ''}`}
+                  className={styles.textarea}
                 />
               </div>
             </Form.Item>
@@ -197,7 +195,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 <Input
                   placeholder="например, Ташкент, Чиланзарский район"
                   size="large"
-                  className={`${styles.input} ${isDark ? styles.dark : ''}`}
+                  className={styles.input}
                   prefix={<EnvironmentOutlined className={styles.inputIcon} />}
                 />
               </div>
@@ -212,13 +210,13 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 <Input.TextArea
                   placeholder="Улица, номер дома, ориентир..."
                   rows={2}
-                  className={`${styles.textarea} ${isDark ? styles.dark : ''}`}
+                  className={styles.textarea}
                 />
               </div>
             </Form.Item>
 
             {/* Map placeholder */}
-            <div className={`${styles.mapPlaceholder} ${isDark ? styles.dark : ''}`}>
+            <div className={styles.mapPlaceholder}>
               <EnvironmentOutlined className={styles.mapIcon} />
               <span>Нажмите чтобы выбрать на карте</span>
             </div>
@@ -233,7 +231,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                   <label className={styles.inputLabel}>Дата начала</label>
                   <DatePicker
                     size="large"
-                    className={`${styles.datePicker} ${isDark ? styles.dark : ''}`}
+                    className={styles.datePicker}
                     placeholder="Выберите дату"
                     format="DD.MM.YYYY"
                     suffixIcon={<CalendarOutlined />}
@@ -250,7 +248,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                   <label className={styles.inputLabel}>Дата завершения</label>
                   <DatePicker
                     size="large"
-                    className={`${styles.datePicker} ${isDark ? styles.dark : ''}`}
+                    className={styles.datePicker}
                     placeholder="Выберите дату"
                     format="DD.MM.YYYY"
                     suffixIcon={<CalendarOutlined />}
@@ -272,7 +270,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 <label className={styles.inputLabel}>Бюджет проекта</label>
                 <InputNumber
                   size="large"
-                  className={`${styles.inputNumber} ${isDark ? styles.dark : ''}`}
+                  className={styles.inputNumber}
                   placeholder="0"
                   formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   parser={(value) => value!.replace(/\s/g, '') as unknown as number}
@@ -291,7 +289,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                       <label className={styles.inputLabel}>Этажность</label>
                       <InputNumber
                         size="large"
-                        className={`${styles.inputNumber} ${isDark ? styles.dark : ''}`}
+                        className={styles.inputNumber}
                         placeholder="0"
                         min={1}
                         max={100}
@@ -305,7 +303,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                       <label className={styles.inputLabel}>Количество квартир</label>
                       <InputNumber
                         size="large"
-                        className={`${styles.inputNumber} ${isDark ? styles.dark : ''}`}
+                        className={styles.inputNumber}
                         placeholder="0"
                         min={1}
                         style={{ width: '100%' }}
@@ -321,7 +319,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 <label className={styles.inputLabel}>Общая площадь</label>
                 <InputNumber
                   size="large"
-                  className={`${styles.inputNumber} ${isDark ? styles.dark : ''}`}
+                  className={styles.inputNumber}
                   placeholder="0"
                   addonAfter="м²"
                   style={{ width: '100%' }}
@@ -338,7 +336,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
                 onChange={({ fileList }) => setFileList(fileList)}
                 beforeUpload={() => false}
                 maxCount={1}
-                className={`${styles.upload} ${isDark ? styles.dark : ''}`}
+                className={styles.upload}
               >
                 {fileList.length === 0 && (
                   <div className={styles.uploadButton}>
@@ -407,7 +405,7 @@ export function CreateProjectModal({ open, onClose, onSubmit }: CreateProjectMod
         <div className={styles.footer}>
           {currentStep > 0 && (
             <button
-              className={`${styles.button} ${styles.secondaryButton} ${isDark ? styles.dark : ''}`}
+              className={`${styles.button} ${styles.secondaryButton}`}
               onClick={handleBack}
             >
               Назад
