@@ -1,17 +1,25 @@
 import { useMemo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Card, Tabs, Row, Col, Progress, Button, Descriptions, Space } from 'antd'
+import { Tabs, Row, Col, Progress, Button, Tooltip } from 'antd'
 import {
   ArrowLeftOutlined,
   EditOutlined,
   EnvironmentOutlined,
   CalendarOutlined,
-  DollarOutlined,
+  HomeOutlined,
+  BuildOutlined,
+  ExpandAltOutlined,
+  TeamOutlined,
+  FileTextOutlined,
+  AppstoreOutlined,
+  LineChartOutlined,
+  FolderOutlined,
+  ToolOutlined,
 } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
-import { PageContainer, StatCard, StatusBadge, EmptyState } from '@shared/ui'
-import { useThemeStore } from '@shared/store'
-import { formatCurrency, formatDate, formatPercent } from '@shared/lib'
+import { PageContainer, StatusBadge, EmptyState } from '@shared/ui'
+import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
+import { formatDate } from '@shared/lib'
 import { mockProjects } from '@mocks'
 import styles from './ProjectDetail.module.css'
 
@@ -20,6 +28,7 @@ export function ProjectDetail() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const { isDark } = useThemeStore()
+  const { unit } = useCurrencyStore()
 
   const project = useMemo(
     () => mockProjects.find((p) => p.id === id),
@@ -50,90 +59,196 @@ export function ProjectDetail() {
     return labels[status] || status
   }
 
-  const budgetSpent = project.spent / project.budget * 100
+  const formatValue = (value: number) => {
+    const { formatted, suffix, fullValue } = formatCurrencyCompact(value, unit)
+    return { display: formatted + suffix, full: fullValue }
+  }
+
+  const budgetValue = formatValue(project.budget)
+  const spentValue = formatValue(project.spent)
+  const budgetPercent = Math.round((project.spent / project.budget) * 100)
 
   const tabItems = [
     {
       key: 'overview',
-      label: t('projects.tabs.overview'),
+      label: (
+        <span className={styles.tabLabel}>
+          <AppstoreOutlined />
+          {t('projects.tabs.overview')}
+        </span>
+      ),
       children: (
         <div className={styles.tabContent}>
-          <Row gutter={[20, 20]}>
-            <Col xs={24} md={16}>
-              <Card className={`${styles.card} ${isDark ? styles.dark : ''}`}>
-                <Descriptions
-                  column={{ xs: 1, sm: 2 }}
-                  labelStyle={{ color: isDark ? '#9ca3af' : '#6b7280' }}
-                  contentStyle={{ color: isDark ? '#f9fafb' : '#111827', fontWeight: 500 }}
-                >
-                  <Descriptions.Item label="Название">
-                    {project.name}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Статус">
-                    <StatusBadge
-                      status={project.status}
-                      label={getStatusLabel(project.status)}
+          <Row gutter={[24, 24]}>
+            {/* Left Column - Project Info */}
+            <Col xs={24} lg={16}>
+              {/* Quick Stats Row */}
+              <div className={styles.quickStats}>
+                {project.totalArea && (
+                  <div className={`${styles.quickStatItem} ${isDark ? styles.dark : ''}`}>
+                    <ExpandAltOutlined className={styles.quickStatIcon} />
+                    <div className={styles.quickStatContent}>
+                      <span className={styles.quickStatValue}>
+                        {project.totalArea.toLocaleString()} м²
+                      </span>
+                      <span className={styles.quickStatLabel}>Площадь</span>
+                    </div>
+                  </div>
+                )}
+                {project.floors && (
+                  <div className={`${styles.quickStatItem} ${isDark ? styles.dark : ''}`}>
+                    <BuildOutlined className={styles.quickStatIcon} />
+                    <div className={styles.quickStatContent}>
+                      <span className={styles.quickStatValue}>{project.floors}</span>
+                      <span className={styles.quickStatLabel}>Этажей</span>
+                    </div>
+                  </div>
+                )}
+                {project.apartments && (
+                  <div className={`${styles.quickStatItem} ${isDark ? styles.dark : ''}`}>
+                    <HomeOutlined className={styles.quickStatIcon} />
+                    <div className={styles.quickStatContent}>
+                      <span className={styles.quickStatValue}>{project.apartments}</span>
+                      <span className={styles.quickStatLabel}>Квартир</span>
+                    </div>
+                  </div>
+                )}
+                <div className={`${styles.quickStatItem} ${isDark ? styles.dark : ''}`}>
+                  <TeamOutlined className={styles.quickStatIcon} />
+                  <div className={styles.quickStatContent}>
+                    <span className={styles.quickStatValue}>24</span>
+                    <span className={styles.quickStatLabel}>Сотрудников</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description Card */}
+              <div className={`${styles.infoCard} ${isDark ? styles.dark : ''}`}>
+                <h3 className={styles.infoCardTitle}>О проекте</h3>
+                <p className={styles.infoCardText}>{project.description}</p>
+              </div>
+
+              {/* Timeline */}
+              <div className={`${styles.infoCard} ${isDark ? styles.dark : ''}`}>
+                <h3 className={styles.infoCardTitle}>Сроки проекта</h3>
+                <div className={styles.timeline}>
+                  <div className={styles.timelineItem}>
+                    <div className={`${styles.timelineDot} ${styles.active}`} />
+                    <div className={styles.timelineContent}>
+                      <span className={styles.timelineLabel}>Начало</span>
+                      <span className={styles.timelineValue}>{formatDate(project.startDate, 'long')}</span>
+                    </div>
+                  </div>
+                  <div className={styles.timelineLine}>
+                    <div
+                      className={styles.timelineProgress}
+                      style={{ width: `${project.progress}%` }}
                     />
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Адрес" span={2}>
-                    {project.address}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Дата начала">
-                    {formatDate(project.startDate)}
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Дата окончания">
-                    {formatDate(project.endDate)}
-                  </Descriptions.Item>
-                  {project.totalArea && (
-                    <Descriptions.Item label="Общая площадь">
-                      {project.totalArea.toLocaleString()} м²
-                    </Descriptions.Item>
-                  )}
-                  {project.floors && (
-                    <Descriptions.Item label="Этажей">
-                      {project.floors}
-                    </Descriptions.Item>
-                  )}
-                  {project.apartments && (
-                    <Descriptions.Item label="Квартир">
-                      {project.apartments}
-                    </Descriptions.Item>
-                  )}
-                  <Descriptions.Item label="Описание" span={2}>
-                    {project.description}
-                  </Descriptions.Item>
-                </Descriptions>
-              </Card>
+                  </div>
+                  <div className={styles.timelineItem}>
+                    <div className={`${styles.timelineDot} ${project.progress === 100 ? styles.active : ''}`} />
+                    <div className={styles.timelineContent}>
+                      <span className={styles.timelineLabel}>Завершение</span>
+                      <span className={styles.timelineValue}>{formatDate(project.endDate, 'long')}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Address Card */}
+              <div className={`${styles.infoCard} ${isDark ? styles.dark : ''}`}>
+                <h3 className={styles.infoCardTitle}>Местоположение</h3>
+                <div className={styles.addressContent}>
+                  <EnvironmentOutlined className={styles.addressIcon} />
+                  <div>
+                    <p className={styles.addressText}>{project.address}</p>
+                    <span className={styles.addressRegion}>{project.location}</span>
+                  </div>
+                </div>
+                {/* Map Placeholder */}
+                <div className={`${styles.mapPlaceholder} ${isDark ? styles.dark : ''}`}>
+                  <EnvironmentOutlined />
+                  <span>Показать на карте</span>
+                </div>
+              </div>
             </Col>
-            <Col xs={24} md={8}>
-              <div className={styles.statsColumn}>
-                <StatCard
-                  title="Прогресс"
-                  value={`${project.progress}%`}
-                  icon={
-                    <Progress
-                      type="circle"
-                      percent={project.progress}
-                      size={36}
-                      strokeWidth={8}
-                      strokeColor="#4F46E5"
-                      trailColor={isDark ? '#374151' : '#E5E7EB'}
-                      format={() => ''}
-                    />
-                  }
-                />
-                <StatCard
-                  title="Бюджет"
-                  value={formatCurrency(project.budget)}
-                  icon={<DollarOutlined />}
-                />
-                <StatCard
-                  title="Израсходовано"
-                  value={formatCurrency(project.spent)}
-                  suffix={`(${formatPercent(budgetSpent)})`}
-                  icon={<DollarOutlined />}
-                  trend={budgetSpent > 100 ? -5 : 0}
-                />
+
+            {/* Right Column - Stats */}
+            <Col xs={24} lg={8}>
+              {/* Progress Card */}
+              <div className={`${styles.progressCard} ${isDark ? styles.dark : ''}`}>
+                <div className={styles.progressHeader}>
+                  <span className={styles.progressTitle}>Прогресс строительства</span>
+                </div>
+                <div className={styles.progressCircleWrapper}>
+                  <Progress
+                    type="circle"
+                    percent={project.progress}
+                    size={140}
+                    strokeWidth={10}
+                    strokeColor={{
+                      '0%': '#4F46E5',
+                      '100%': '#7C3AED',
+                    }}
+                    trailColor={isDark ? '#374151' : '#E5E7EB'}
+                    format={(percent) => (
+                      <div className={styles.progressCircleContent}>
+                        <span className={styles.progressPercent}>{percent}%</span>
+                        <span className={styles.progressLabel}>выполнено</span>
+                      </div>
+                    )}
+                  />
+                </div>
+                <div className={styles.progressStages}>
+                  <div className={`${styles.progressStage} ${styles.completed}`}>
+                    <span className={styles.stageDot} />
+                    <span>Фундамент</span>
+                  </div>
+                  <div className={`${styles.progressStage} ${styles.completed}`}>
+                    <span className={styles.stageDot} />
+                    <span>Каркас</span>
+                  </div>
+                  <div className={`${styles.progressStage} ${styles.active}`}>
+                    <span className={styles.stageDot} />
+                    <span>Отделка</span>
+                  </div>
+                  <div className={styles.progressStage}>
+                    <span className={styles.stageDot} />
+                    <span>Сдача</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Budget Card */}
+              <div className={`${styles.budgetCard} ${isDark ? styles.dark : ''}`}>
+                <div className={styles.budgetHeader}>
+                  <span className={styles.budgetTitle}>Бюджет</span>
+                </div>
+                <Tooltip title={budgetValue.full}>
+                  <div className={styles.budgetAmount}>{budgetValue.display}</div>
+                </Tooltip>
+                <div className={styles.budgetProgress}>
+                  <div className={styles.budgetProgressHeader}>
+                    <span>Израсходовано</span>
+                    <span className={styles.budgetPercent}>{budgetPercent}%</span>
+                  </div>
+                  <Progress
+                    percent={budgetPercent}
+                    showInfo={false}
+                    strokeColor={budgetPercent > 90 ? '#EF4444' : budgetPercent > 70 ? '#F59E0B' : '#10B981'}
+                    trailColor={isDark ? '#374151' : '#E5E7EB'}
+                    size={['100%', 8]}
+                  />
+                  <Tooltip title={spentValue.full}>
+                    <div className={styles.budgetSpent}>{spentValue.display}</div>
+                  </Tooltip>
+                </div>
+                <div className={styles.budgetRemaining}>
+                  <span className={styles.budgetRemainingLabel}>Остаток</span>
+                  <span className={styles.budgetRemainingValue}>
+                    {formatValue(project.budget - project.spent).display}
+                  </span>
+                </div>
               </div>
             </Col>
           </Row>
@@ -142,7 +257,12 @@ export function ProjectDetail() {
     },
     {
       key: 'construction',
-      label: t('projects.tabs.construction'),
+      label: (
+        <span className={styles.tabLabel}>
+          <ToolOutlined />
+          {t('projects.tabs.construction')}
+        </span>
+      ),
       children: (
         <EmptyState
           title="Этапы строительства"
@@ -152,7 +272,12 @@ export function ProjectDetail() {
     },
     {
       key: 'estimates',
-      label: t('projects.tabs.estimates'),
+      label: (
+        <span className={styles.tabLabel}>
+          <FileTextOutlined />
+          {t('projects.tabs.estimates')}
+        </span>
+      ),
       children: (
         <EmptyState
           title="Сметы"
@@ -162,7 +287,12 @@ export function ProjectDetail() {
     },
     {
       key: 'warehouse',
-      label: t('projects.tabs.warehouse'),
+      label: (
+        <span className={styles.tabLabel}>
+          <AppstoreOutlined />
+          {t('projects.tabs.warehouse')}
+        </span>
+      ),
       children: (
         <EmptyState
           title="Склад"
@@ -171,18 +301,13 @@ export function ProjectDetail() {
       ),
     },
     {
-      key: 'requests',
-      label: t('projects.tabs.requests'),
-      children: (
-        <EmptyState
-          title="Заявки"
-          description="Здесь будут отображаться заявки на материалы"
-        />
-      ),
-    },
-    {
       key: 'documents',
-      label: t('projects.tabs.documents'),
+      label: (
+        <span className={styles.tabLabel}>
+          <FolderOutlined />
+          {t('projects.tabs.documents')}
+        </span>
+      ),
       children: (
         <EmptyState
           title="Документы"
@@ -192,7 +317,12 @@ export function ProjectDetail() {
     },
     {
       key: 'analytics',
-      label: t('projects.tabs.analytics'),
+      label: (
+        <span className={styles.tabLabel}>
+          <LineChartOutlined />
+          {t('projects.tabs.analytics')}
+        </span>
+      ),
       children: (
         <EmptyState
           title="Аналитика"
@@ -204,52 +334,59 @@ export function ProjectDetail() {
 
   return (
     <PageContainer>
-      {/* Header */}
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <Button
-            type="text"
-            icon={<ArrowLeftOutlined />}
-            onClick={() => navigate('/projects')}
-            className={styles.backButton}
-          />
-          <div className={styles.headerInfo}>
-            <div className={styles.titleRow}>
-              <h1 className={`${styles.title} ${isDark ? styles.dark : ''}`}>
-                {project.name}
-              </h1>
+      {/* Hero Section */}
+      <div className={styles.hero}>
+        {/* Background Image */}
+        {project.imageUrl && (
+          <div
+            className={styles.heroImage}
+            style={{ backgroundImage: `url(${project.imageUrl})` }}
+          >
+            <div className={styles.heroOverlay} />
+          </div>
+        )}
+
+        {/* Hero Content */}
+        <div className={styles.heroContent}>
+          <div className={styles.heroTop}>
+            <Button
+              type="text"
+              icon={<ArrowLeftOutlined />}
+              onClick={() => navigate('/projects')}
+              className={styles.backButton}
+            >
+              Проекты
+            </Button>
+            <Button type="primary" icon={<EditOutlined />} className={styles.editButton}>
+              Редактировать
+            </Button>
+          </div>
+
+          <div className={styles.heroInfo}>
+            <div className={styles.heroTitleRow}>
+              <h1 className={styles.heroTitle}>{project.name}</h1>
               <StatusBadge
                 status={project.status}
                 label={getStatusLabel(project.status)}
               />
             </div>
-            <Space size={16} className={styles.meta}>
-              <span>
+            <div className={styles.heroMeta}>
+              <span className={styles.heroMetaItem}>
                 <EnvironmentOutlined /> {project.location}
               </span>
-              <span>
-                <CalendarOutlined /> {formatDate(project.startDate)} - {formatDate(project.endDate)}
+              <span className={styles.heroMetaDivider}>•</span>
+              <span className={styles.heroMetaItem}>
+                <CalendarOutlined /> {formatDate(project.startDate)} — {formatDate(project.endDate)}
               </span>
-            </Space>
+            </div>
           </div>
         </div>
-        <Button type="primary" icon={<EditOutlined />}>
-          Редактировать
-        </Button>
       </div>
-
-      {/* Cover Image */}
-      {project.imageUrl && (
-        <div
-          className={styles.coverImage}
-          style={{ backgroundImage: `url(${project.imageUrl})` }}
-        />
-      )}
 
       {/* Tabs */}
       <Tabs
         items={tabItems}
-        className={styles.tabs}
+        className={`${styles.tabs} ${isDark ? styles.dark : ''}`}
         size="large"
       />
     </PageContainer>
