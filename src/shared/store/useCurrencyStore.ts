@@ -28,11 +28,11 @@ interface CurrencyState {
 export const useCurrencyStore = create<CurrencyState>()(
   persist(
     (set) => ({
-      unit: 'auto',
+      unit: 'million',
       setUnit: (unit: CurrencyUnit) => set({ unit }),
     }),
     {
-      name: 'buildtrack-currency',
+      name: 'buildtrack-currency-v2',
     }
   )
 )
