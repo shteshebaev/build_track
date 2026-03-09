@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
 import { formatCurrency, formatDate } from '@shared/lib'
-import { CreateEstimateModal, type EstimateFormValues } from './components'
+import { CreateEstimateModal, EstimateDetailModal, type EstimateFormValues } from './components'
 
 interface Estimate {
   id: string
@@ -29,11 +29,18 @@ export function Estimates() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
   const [createModalOpen, setCreateModalOpen] = useState(false)
+  const [detailModalOpen, setDetailModalOpen] = useState(false)
+  const [selectedEstimate, setSelectedEstimate] = useState<Estimate | null>(null)
 
   const handleCreateEstimate = (values: EstimateFormValues) => {
     console.log('Creating estimate:', values)
     // Here you would typically make an API call to create the estimate
     setCreateModalOpen(false)
+  }
+
+  const handleViewEstimate = (estimate: Estimate) => {
+    setSelectedEstimate(estimate)
+    setDetailModalOpen(true)
   }
 
   const getStatusTag = (status: string) => {
@@ -61,7 +68,7 @@ export function Estimates() {
     )},
     { title: 'Статус', dataIndex: 'status', key: 'status', render: (s) => getStatusTag(s) },
     { title: 'Создана', dataIndex: 'createdAt', key: 'createdAt', render: (d) => formatDate(d) },
-    { title: '', key: 'actions', render: () => <Button type="link" size="small">{t('common.view')}</Button> },
+    { title: '', key: 'actions', render: (_, record) => <Button type="link" size="small" onClick={(e) => { e.stopPropagation(); handleViewEstimate(record); }}>{t('common.view')}</Button> },
   ]
 
   return (
@@ -79,6 +86,13 @@ export function Estimates() {
         open={createModalOpen}
         onClose={() => setCreateModalOpen(false)}
         onSubmit={handleCreateEstimate}
+      />
+
+      {/* Estimate Detail Modal */}
+      <EstimateDetailModal
+        open={detailModalOpen}
+        estimate={selectedEstimate}
+        onClose={() => setDetailModalOpen(false)}
       />
     </PageContainer>
   )
