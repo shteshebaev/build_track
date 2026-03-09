@@ -1,0 +1,48 @@
+.statsRow {
+  margin-bottom: 24px;
+}
+
+.chartsRow {
+  margin-bottom: 24px;
+}
+
+.chartCard {
+  height: 100%;
+  border-radius: 16px;
+  border: none;
+}
+
+.chartCard.light {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.chartCard.dark {
+  background: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.chartCard :global(.ant-card-head) {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 24px;
+  min-height: auto;
+}
+
+.chartCard.dark :global(.ant-card-head) {
+  border-bottom-color: #374151;
+}
+
+.chartCard :global(.ant-card-head-title) {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chartCard :global(.ant-card-body) {
+  padding: 20px 24px;
+}
+
+@media (max-width: 768px) {
+  .chartCard :global(.ant-card-body) {
+    padding: 16px;
+  }
+}

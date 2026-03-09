@@ -1,0 +1,208 @@
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.filters.dark {
+  background: #1f2937;
+}
+
+.projectCard {
+  height: 100%;
+  border-radius: 16px;
+  border: none;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.projectCard.light {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.projectCard.dark {
+  background: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+}
+
+.projectCard.light:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.projectCard.dark:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.projectCard :global(.ant-card-body) {
+  padding: 20px;
+}
+
+.projectImage {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  background-color: #f3f4f6;
+}
+
+.dark .projectImage {
+  background-color: #374151;
+}
+
+.listContent {
+  display: flex;
+  gap: 20px;
+}
+
+.listImage {
+  width: 200px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-color: #f3f4f6;
+}
+
+.dark .listImage {
+  background-color: #374151;
+}
+
+.cardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.projectName {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #111827;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.dark .projectName {
+  color: #f9fafb;
+}
+
+.projectLocation {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.dark .projectLocation {
+  color: #9ca3af;
+}
+
+.progressSection {
+  margin-bottom: 16px;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.dark .progressHeader {
+  color: #9ca3af;
+}
+
+.progressValue {
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.dark .progressValue {
+  color: #818cf8;
+}
+
+.projectMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metaLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+}
+
+.metaValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.dark .metaValue {
+  color: #f9fafb;
+}
+
+.cardFooter {
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.dark .cardFooter {
+  border-top-color: #374151;
+}
+
+.dateLabel {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .listContent {
+    flex-direction: column;
+  }
+
+  .listImage {
+    width: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+.card {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.card.dark {
+  background: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.settingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.dark .settingRow {
+  border-bottom-color: #374151;
+}
+
+.settingRow:last-child {
+  border-bottom: none;
+}

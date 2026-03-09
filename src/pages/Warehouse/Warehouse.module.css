@@ -1,0 +1,99 @@
+.filtersCard {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.filtersCard.dark {
+  background: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.filtersCard :global(.ant-card-body) {
+  padding: 16px 20px;
+}
+
+.tableCard {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tableCard.dark {
+  background: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.tableCard :global(.ant-card-body) {
+  padding: 0;
+}
+
+.materialName {
+  font-weight: 500;
+  color: #111827;
+}
+
+.materialName.dark {
+  color: #f9fafb;
+}
+
+.sku {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.quantityCell {
+  min-width: 140px;
+}
+
+.quantityHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.quantityValue {
+  font-weight: 600;
+  color: #111827;
+}
+
+.quantityValue.dark {
+  color: #f9fafb;
+}
+
+.warningIcon {
+  color: #f59e0b;
+  font-size: 14px;
+}
+
+.stockInfo {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.reserved {
+  color: #6b7280;
+}
+
+.available {
+  font-weight: 600;
+  color: #111827;
+}
+
+.available.dark {
+  color: #f9fafb;
+}
+
+.value {
+  font-weight: 600;
+  color: #111827;
+}
+
+.value.dark {
+  color: #f9fafb;
+}
