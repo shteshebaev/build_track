@@ -1,0 +1,596 @@
+/* iOS-style Modal */
+.modal :global(.ant-modal-content) {
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+}
+
+.modal.dark :global(.ant-modal-content) {
+  background: #1f2937;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal :global(.ant-modal-body) {
+  padding: 0;
+}
+
+.modal :global(.ant-modal-close) {
+  top: 16px;
+  right: 16px;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  color: #6b7280;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #111827;
+}
+
+.modal.dark .closeButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+}
+
+.modal.dark .closeButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #f9fafb;
+}
+
+.modalContent {
+  padding: 0;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 32px 24px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.modal.dark .header {
+  border-bottom-color: #374151;
+  background: #1f2937;
+}
+
+.headerIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 24px;
+  color: white;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px;
+}
+
+.modal.dark .title {
+  color: #f9fafb;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.modal.dark .subtitle {
+  color: #9ca3af;
+}
+
+/* Tabs */
+.tabs {
+  margin: 0;
+}
+
+.tabs :global(.ant-tabs-nav) {
+  margin: 0;
+  padding: 0 24px;
+  background: #f3f4f6;
+}
+
+.modal.dark .tabs :global(.ant-tabs-nav) {
+  background: #111827;
+}
+
+.tabs :global(.ant-tabs-nav::before) {
+  border-bottom: none;
+}
+
+.tabs :global(.ant-tabs-tab) {
+  padding: 16px 0;
+  margin: 0 16px 0 0;
+}
+
+.tabs :global(.ant-tabs-tab-btn) {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.tabs :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+  color: #4f46e5;
+}
+
+.modal.dark .tabs :global(.ant-tabs-tab-btn) {
+  color: #9ca3af;
+}
+
+.modal.dark .tabs :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+  color: #818cf8;
+}
+
+.tabs :global(.ant-tabs-ink-bar) {
+  background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+}
+
+.tabLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* Form */
+.form {
+  padding: 0;
+}
+
+.tabContent {
+  padding: 24px;
+  min-height: 320px;
+  background: #ffffff;
+}
+
+.modal.dark .tabContent {
+  background: #1f2937;
+}
+
+/* Project Type Selector */
+.typeSelector {
+  margin-bottom: 20px;
+}
+
+.typeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.typeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.typeCard:hover {
+  background: #e5e7eb;
+}
+
+.typeCard.selected {
+  background: rgba(79, 70, 229, 0.1);
+  border-color: #4f46e5;
+}
+
+.modal.dark .typeCard {
+  background: #374151;
+}
+
+.modal.dark .typeCard:hover {
+  background: #4b5563;
+}
+
+.modal.dark .typeCard.selected {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: #818cf8;
+}
+
+.typeIcon {
+  font-size: 24px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.typeCard.selected .typeIcon {
+  color: #4f46e5;
+}
+
+.modal.dark .typeIcon {
+  color: #9ca3af;
+}
+
+.modal.dark .typeCard.selected .typeIcon {
+  color: #818cf8;
+}
+
+.typeSelector .typeLabel {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.typeCard.selected .typeLabel {
+  color: #4f46e5;
+}
+
+.modal.dark .typeSelector .typeLabel {
+  color: #9ca3af;
+}
+
+.modal.dark .typeCard.selected .typeLabel {
+  color: #818cf8;
+}
+
+/* Input Groups */
+.inputGroup {
+  margin-bottom: 16px;
+}
+
+.inputLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.modal.dark .inputLabel {
+  color: #e5e7eb;
+}
+
+/* Inputs - iOS Style */
+.input,
+.textarea {
+  border-radius: 12px !important;
+  border: 1.5px solid #e5e7eb !important;
+  background: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+
+.input:focus,
+.input:hover,
+.textarea:focus,
+.textarea:hover {
+  border-color: #4f46e5 !important;
+}
+
+.modal.dark .input,
+.modal.dark .textarea {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.modal.dark .input:focus,
+.modal.dark .input:hover,
+.modal.dark .textarea:focus,
+.modal.dark .textarea:hover {
+  border-color: #818cf8 !important;
+}
+
+.modal.dark .input :global(.ant-input),
+.modal.dark .textarea :global(.ant-input) {
+  background: transparent !important;
+  color: #f9fafb !important;
+}
+
+.modal.dark .input :global(.ant-input)::placeholder,
+.modal.dark .textarea :global(.ant-input)::placeholder {
+  color: #6b7280 !important;
+}
+
+.inputIcon {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+/* Select */
+.select :global(.ant-select-selector) {
+  border-radius: 12px !important;
+  border: 1.5px solid #e5e7eb !important;
+  background: #ffffff !important;
+  height: 44px !important;
+  padding: 0 16px !important;
+}
+
+.select :global(.ant-select-selection-item) {
+  line-height: 42px !important;
+}
+
+.modal.dark .select :global(.ant-select-selector) {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.modal.dark .select :global(.ant-select-selection-item) {
+  color: #f9fafb !important;
+}
+
+/* DatePicker */
+.datePicker {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px !important;
+  border: 1.5px solid #e5e7eb !important;
+  background: #ffffff !important;
+}
+
+.datePicker:hover {
+  border-color: #4f46e5 !important;
+}
+
+.modal.dark .datePicker {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.modal.dark .datePicker:hover {
+  border-color: #818cf8 !important;
+}
+
+.modal.dark .datePicker :global(.ant-picker-input input) {
+  color: #f9fafb !important;
+}
+
+.modal.dark .datePicker :global(.ant-picker-input input)::placeholder {
+  color: #6b7280 !important;
+}
+
+.modal.dark .datePicker :global(.ant-picker-suffix) {
+  color: #9ca3af !important;
+}
+
+/* InputNumber */
+.inputNumber {
+  width: 100%;
+  border-radius: 12px !important;
+  border: 1.5px solid #e5e7eb !important;
+  background: #ffffff !important;
+}
+
+.inputNumber:hover {
+  border-color: #4f46e5 !important;
+}
+
+.inputNumber :global(.ant-input-number-input) {
+  height: 42px;
+}
+
+.modal.dark .inputNumber {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.modal.dark .inputNumber:hover {
+  border-color: #818cf8 !important;
+}
+
+.modal.dark .inputNumber :global(.ant-input-number-input) {
+  color: #f9fafb !important;
+}
+
+.modal.dark .inputNumber :global(.ant-input-number-input)::placeholder {
+  color: #6b7280 !important;
+}
+
+.modal.dark .inputNumber :global(.ant-input-number-group-addon) {
+  background: #4b5563 !important;
+  border-color: #4b5563 !important;
+  color: #d1d5db !important;
+}
+
+/* Row layout */
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.halfWidth {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Map Placeholder */
+.mapPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  border: 2px dashed #d1d5db;
+  color: #9ca3af;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.mapPlaceholder:hover {
+  border-color: #4f46e5;
+  color: #4f46e5;
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.modal.dark .mapPlaceholder {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+.modal.dark .mapPlaceholder:hover {
+  border-color: #818cf8;
+  color: #818cf8;
+  background: rgba(129, 140, 248, 0.1);
+}
+
+.mapIcon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+/* Upload */
+.upload :global(.ant-upload-select) {
+  width: 100% !important;
+  height: 120px !important;
+  border-radius: 12px !important;
+  border: 2px dashed #d1d5db !important;
+  background: #f3f4f6 !important;
+  transition: all 0.2s ease !important;
+}
+
+.upload :global(.ant-upload-select):hover {
+  border-color: #4f46e5 !important;
+  background: rgba(79, 70, 229, 0.05) !important;
+}
+
+.modal.dark .upload :global(.ant-upload-select) {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.modal.dark .upload :global(.ant-upload-select):hover {
+  border-color: #818cf8 !important;
+  background: rgba(129, 140, 248, 0.1) !important;
+}
+
+.uploadButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.uploadButton :global(.anticon) {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.modal.dark .footer {
+  border-top-color: #374151;
+  background: #111827;
+}
+
+/* Buttons - iOS Style */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  min-width: 180px;
+}
+
+.primaryButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+.primaryButton:active {
+  transform: translateY(0);
+}
+
+.primaryButton.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.secondaryButton {
+  background: #ffffff;
+  color: #374151;
+  border: 1.5px solid #e5e7eb;
+}
+
+.secondaryButton:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.modal.dark .secondaryButton {
+  background: #374151;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+.modal.dark .secondaryButton:hover {
+  background: #4b5563;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .typeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .halfWidth {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

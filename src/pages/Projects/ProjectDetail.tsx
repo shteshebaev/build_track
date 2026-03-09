@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Tabs, Row, Col, Progress, Button, Tooltip } from 'antd'
 import {
@@ -21,6 +21,7 @@ import { PageContainer, StatusBadge, EmptyState } from '@shared/ui'
 import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
 import { formatDate } from '@shared/lib'
 import { mockProjects } from '@mocks'
+import { EditProjectModal, type EditProjectFormValues } from './components'
 import styles from './ProjectDetail.module.css'
 
 export function ProjectDetail() {
@@ -29,6 +30,7 @@ export function ProjectDetail() {
   const navigate = useNavigate()
   const { isDark } = useThemeStore()
   const { unit } = useCurrencyStore()
+  const [editModalOpen, setEditModalOpen] = useState(false)
 
   const project = useMemo(
     () => mockProjects.find((p) => p.id === id),
@@ -67,6 +69,12 @@ export function ProjectDetail() {
   const budgetValue = formatValue(project.budget)
   const spentValue = formatValue(project.spent)
   const budgetPercent = Math.round((project.spent / project.budget) * 100)
+
+  const handleEditProject = (values: EditProjectFormValues) => {
+    console.log('Updating project:', values)
+    // Here you would typically make an API call to update the project
+    setEditModalOpen(false)
+  }
 
   const tabItems = [
     {
@@ -385,7 +393,12 @@ export function ProjectDetail() {
             >
               Проекты
             </Button>
-            <Button type="primary" icon={<EditOutlined />} className={styles.editButton}>
+            <Button
+              type="primary"
+              icon={<EditOutlined />}
+              className={styles.editButton}
+              onClick={() => setEditModalOpen(true)}
+            >
               Редактировать
             </Button>
           </div>
@@ -416,6 +429,14 @@ export function ProjectDetail() {
         items={tabItems}
         className={`${styles.tabs} ${isDark ? styles.dark : ''}`}
         size="large"
+      />
+
+      {/* Edit Project Modal */}
+      <EditProjectModal
+        open={editModalOpen}
+        project={project}
+        onClose={() => setEditModalOpen(false)}
+        onSubmit={handleEditProject}
       />
     </PageContainer>
   )
