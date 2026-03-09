@@ -1,4 +1,4 @@
-import { Row, Col, Card } from 'antd'
+import { Row, Col, Card, Tooltip } from 'antd'
 import {
   ProjectOutlined,
   DatabaseOutlined,
@@ -8,9 +8,9 @@ import {
   DollarOutlined,
 } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
-import { PageContainer, PageHeader, StatCard } from '@shared/ui'
-import { formatCurrency, formatPercent } from '@shared/lib'
-import { useThemeStore } from '@shared/store'
+import { PageContainer, PageHeader, StatCard, CurrencyUnitSwitcher } from '@shared/ui'
+import { formatPercent } from '@shared/lib'
+import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
 import {
   mockDashboardStats,
   mockMaterialUsageData,
@@ -27,13 +27,25 @@ import styles from './Dashboard.module.css'
 export function Dashboard() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
+  const { unit } = useCurrencyStore()
   const stats = mockDashboardStats
+
+  // Format currency values with the selected unit
+  const formatValue = (value: number) => {
+    const { formatted, suffix, fullValue } = formatCurrencyCompact(value, unit)
+    return { display: formatted + suffix, full: fullValue }
+  }
+
+  const warehouseValue = formatValue(stats.warehouseValue)
+  const materialsValue = formatValue(stats.materialsUsed)
+  const salesValue = formatValue(stats.salesRevenue)
 
   return (
     <PageContainer>
       <PageHeader
         title={t('dashboard.title')}
         subtitle={`${t('dashboard.welcome')}, Иван!`}
+        actions={<CurrencyUnitSwitcher />}
       />
 
       {/* KPI Cards */}
@@ -48,22 +60,30 @@ export function Dashboard() {
           />
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
-          <StatCard
-            title={t('dashboard.warehouseValue')}
-            value={formatCurrency(stats.warehouseValue)}
-            icon={<DatabaseOutlined />}
-            trend={stats.warehouseTrend}
-            trendLabel={t('dashboard.vsLastMonth')}
-          />
+          <Tooltip title={warehouseValue.full} placement="bottom">
+            <div>
+              <StatCard
+                title={t('dashboard.warehouseValue')}
+                value={warehouseValue.display}
+                icon={<DatabaseOutlined />}
+                trend={stats.warehouseTrend}
+                trendLabel={t('dashboard.vsLastMonth')}
+              />
+            </div>
+          </Tooltip>
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
-          <StatCard
-            title={t('dashboard.materialsUsed')}
-            value={formatCurrency(stats.materialsUsed)}
-            icon={<AppstoreOutlined />}
-            trend={stats.materialsTrend}
-            trendLabel={t('dashboard.thisMonth')}
-          />
+          <Tooltip title={materialsValue.full} placement="bottom">
+            <div>
+              <StatCard
+                title={t('dashboard.materialsUsed')}
+                value={materialsValue.display}
+                icon={<AppstoreOutlined />}
+                trend={stats.materialsTrend}
+                trendLabel={t('dashboard.thisMonth')}
+              />
+            </div>
+          </Tooltip>
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
           <StatCard
@@ -84,13 +104,17 @@ export function Dashboard() {
           />
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
-          <StatCard
-            title={t('dashboard.salesRevenue')}
-            value={formatCurrency(stats.salesRevenue)}
-            icon={<DollarOutlined />}
-            trend={stats.salesTrend}
-            trendLabel={t('dashboard.vsLastMonth')}
-          />
+          <Tooltip title={salesValue.full} placement="bottom">
+            <div>
+              <StatCard
+                title={t('dashboard.salesRevenue')}
+                value={salesValue.display}
+                icon={<DollarOutlined />}
+                trend={stats.salesTrend}
+                trendLabel={t('dashboard.vsLastMonth')}
+              />
+            </div>
+          </Tooltip>
         </Col>
       </Row>
 
