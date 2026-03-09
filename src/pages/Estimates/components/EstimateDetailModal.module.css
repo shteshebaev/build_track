@@ -9,7 +9,6 @@
 
 .modal.dark :global(.ant-modal-content) {
   background: #1f2937;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .modal :global(.ant-modal-body) {
@@ -36,7 +35,6 @@
 
 .closeButton:hover {
   background: rgba(0, 0, 0, 0.1);
-  color: #111827;
 }
 
 .modal.dark .closeButton {
@@ -44,181 +42,148 @@
   color: #9ca3af;
 }
 
-.modal.dark .closeButton:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #f9fafb;
-}
-
-.modalContent {
-  padding: 0;
-}
-
 /* Header */
 .header {
-  padding: 24px 24px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
   border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
 }
 
 .modal.dark .header {
   border-bottom-color: #374151;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
-}
-
-.headerTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
 }
 
 .headerIcon {
   width: 48px;
   height: 48px;
-  border-radius: 14px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
   color: white;
+  flex-shrink: 0;
 }
 
-.statusTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 8px;
-  font-weight: 500;
+.headerInfo {
+  flex: 1;
+  min-width: 0;
 }
 
 .title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   color: #111827;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
+  line-height: 1.3;
 }
 
 .modal.dark .title {
   color: #f9fafb;
 }
 
-.projectInfo {
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.metaItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 6px;
+  font-size: 13px;
   color: #6b7280;
 }
 
-.modal.dark .projectInfo {
+.modal.dark .metaItem {
   color: #9ca3af;
 }
 
-/* Stats */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+.statusTag {
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Budget Section */
+.budgetSection {
   padding: 20px 24px;
   background: #f9fafb;
 }
 
-.modal.dark .stats {
+.modal.dark .budgetSection {
   background: #111827;
 }
 
-.statCard {
+.budgetRow {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  gap: 24px;
+  margin-bottom: 16px;
 }
 
-.modal.dark .statCard {
-  background: #1f2937;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.statIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-.statContent {
+.budgetItem {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+  gap: 4px;
 }
 
-.statLabel {
+.budgetLabel {
   font-size: 12px;
   color: #6b7280;
 }
 
-.modal.dark .statLabel {
+.modal.dark .budgetLabel {
   color: #9ca3af;
 }
 
-.statValue {
-  font-size: 15px;
-  font-weight: 600;
-  color: #111827;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.modal.dark .statValue {
-  color: #f9fafb;
-}
-
-/* Progress */
-.progressSection {
-  padding: 20px 24px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.modal.dark .progressSection {
-  border-bottom-color: #374151;
-}
-
-.progressHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.progressLabel {
-  font-size: 14px;
-  font-weight: 500;
-  color: #374151;
-}
-
-.modal.dark .progressLabel {
-  color: #e5e7eb;
-}
-
-.progressValue {
-  font-size: 16px;
+.budgetValue {
+  font-size: 18px;
   font-weight: 700;
   color: #111827;
 }
 
-.modal.dark .progressValue {
+.modal.dark .budgetValue {
   color: #f9fafb;
+}
+
+.budgetValueSpent {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.budgetValueRemaining {
+  font-size: 18px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progressRow :global(.ant-progress) {
+  flex: 1;
+}
+
+.progressPercent {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  min-width: 40px;
+  text-align: right;
+}
+
+.modal.dark .progressPercent {
+  color: #e5e7eb;
 }
 
 /* Table Section */
@@ -226,29 +191,63 @@
   padding: 20px 24px;
 }
 
-.sectionTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111827;
-  margin: 0 0 16px;
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-.modal.dark .sectionTitle {
+.tableTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.modal.dark .tableTitle {
   color: #f9fafb;
+}
+
+.tableCount {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.modal.dark .tableCount {
+  color: #9ca3af;
+}
+
+.table {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .table :global(.ant-table) {
   background: transparent;
+  font-size: 13px;
 }
 
-.modal.dark .table :global(.ant-table) {
-  background: transparent;
+.table :global(.ant-table-thead > tr > th) {
+  background: #f3f4f6;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 10px 12px;
+  border-bottom: none;
+}
+
+.table :global(.ant-table-tbody > tr > td) {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.table :global(.ant-table-tbody > tr:last-child > td) {
+  border-bottom: none;
 }
 
 .modal.dark .table :global(.ant-table-thead > tr > th) {
   background: #374151;
-  color: #e5e7eb;
-  border-bottom-color: #4b5563;
+  color: #9ca3af;
 }
 
 .modal.dark .table :global(.ant-table-tbody > tr > td) {
@@ -257,12 +256,33 @@
 }
 
 .modal.dark .table :global(.ant-table-tbody > tr:hover > td) {
-  background: #374151;
+  background: rgba(55, 65, 81, 0.5);
 }
 
-.modal.dark .table :global(.ant-table-summary > tr > td) {
-  background: #1f2937;
-  border-bottom-color: #374151;
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 12px;
+  margin-top: 8px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.totalRow strong {
+  color: #4f46e5;
+  font-size: 16px;
+}
+
+.modal.dark .totalRow {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+.modal.dark .totalRow strong {
+  color: #818cf8;
 }
 
 /* Footer */
@@ -270,14 +290,12 @@
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  padding: 20px 24px;
+  padding: 16px 24px;
   border-top: 1px solid #e5e7eb;
-  background: #f9fafb;
 }
 
 .modal.dark .footer {
   border-top-color: #374151;
-  background: #111827;
 }
 
 /* Buttons */
@@ -286,10 +304,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 44px;
-  padding: 0 24px;
-  border-radius: 12px;
-  font-size: 15px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -315,7 +333,6 @@
 
 .secondaryButton:hover {
   background: #f9fafb;
-  border-color: #d1d5db;
 }
 
 .modal.dark .secondaryButton {
@@ -329,15 +346,10 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 576px) {
-  .stats {
-    grid-template-columns: 1fr;
+  .budgetRow {
+    flex-direction: column;
+    gap: 12px;
   }
 
   .footer {
