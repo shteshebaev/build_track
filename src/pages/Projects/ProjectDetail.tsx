@@ -171,6 +171,34 @@ export function ProjectDetail() {
                   <span>Показать на карте</span>
                 </div>
               </div>
+
+              {/* Team Card */}
+              <div className={`${styles.infoCard} ${isDark ? styles.dark : ''}`}>
+                <h3 className={styles.infoCardTitle}>Команда проекта</h3>
+                <div className={styles.teamList}>
+                  <div className={styles.teamMember}>
+                    <div className={styles.teamAvatar} style={{ background: '#4F46E5' }}>АК</div>
+                    <div className={styles.teamInfo}>
+                      <span className={styles.teamName}>Алексей Козлов</span>
+                      <span className={styles.teamRole}>Руководитель проекта</span>
+                    </div>
+                  </div>
+                  <div className={styles.teamMember}>
+                    <div className={styles.teamAvatar} style={{ background: '#10B981' }}>ИС</div>
+                    <div className={styles.teamInfo}>
+                      <span className={styles.teamName}>Иван Сидоров</span>
+                      <span className={styles.teamRole}>Главный инженер</span>
+                    </div>
+                  </div>
+                  <div className={styles.teamMember}>
+                    <div className={styles.teamAvatar} style={{ background: '#F59E0B' }}>МП</div>
+                    <div className={styles.teamInfo}>
+                      <span className={styles.teamName}>Мария Петрова</span>
+                      <span className={styles.teamRole}>Архитектор</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Col>
 
             {/* Right Column - Stats */}
