@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Card, Table, Button, Input, Space, Progress, Tag } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
@@ -5,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
 import { formatCurrency, formatDate } from '@shared/lib'
+import { CreateEstimateModal, type EstimateFormValues } from './components'
 
 interface Estimate {
   id: string
@@ -26,6 +28,13 @@ const mockEstimates: Estimate[] = [
 export function Estimates() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
+  const [createModalOpen, setCreateModalOpen] = useState(false)
+
+  const handleCreateEstimate = (values: EstimateFormValues) => {
+    console.log('Creating estimate:', values)
+    // Here you would typically make an API call to create the estimate
+    setCreateModalOpen(false)
+  }
 
   const getStatusTag = (status: string) => {
     const config: Record<string, { color: string; label: string }> = {
@@ -57,13 +66,20 @@ export function Estimates() {
 
   return (
     <PageContainer>
-      <PageHeader title={t('navigation.estimates')} primaryAction={{ label: 'Новая смета', onClick: () => {} }} />
+      <PageHeader title={t('navigation.estimates')} primaryAction={{ label: 'Новая смета', onClick: () => setCreateModalOpen(true) }} />
       <Card style={{ borderRadius: 16, border: 'none', background: isDark ? '#1f2937' : '#fff' }}>
         <Space style={{ marginBottom: 16 }}>
           <Input placeholder={t('common.search')} prefix={<SearchOutlined />} style={{ width: 280 }} allowClear />
         </Space>
         <Table dataSource={mockEstimates} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
       </Card>
+
+      {/* Create Estimate Modal */}
+      <CreateEstimateModal
+        open={createModalOpen}
+        onClose={() => setCreateModalOpen(false)}
+        onSubmit={handleCreateEstimate}
+      />
     </PageContainer>
   )
 }
