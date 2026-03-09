@@ -13,6 +13,7 @@ import { useThemeStore } from '@shared/store'
 import { formatCurrency, formatDate } from '@shared/lib'
 import { mockProjects } from '@mocks'
 import type { ProjectStatus } from '@shared/types'
+import { CreateProjectModal, type ProjectFormValues } from './components'
 import styles from './Projects.module.css'
 
 export function Projects() {
@@ -23,6 +24,7 @@ export function Projects() {
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState<ProjectStatus | 'all'>('all')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [createModalOpen, setCreateModalOpen] = useState(false)
 
   const statusOptions = [
     { value: 'all', label: t('common.all') },
@@ -59,6 +61,13 @@ export function Projects() {
     navigate(`/projects/${id}`)
   }
 
+  const handleCreateProject = (values: ProjectFormValues) => {
+    console.log('Creating project:', values)
+    // Here you would typically make an API call to create the project
+    // For now, we just close the modal
+    setCreateModalOpen(false)
+  }
+
   return (
     <PageContainer>
       <PageHeader
@@ -66,7 +75,7 @@ export function Projects() {
         subtitle={`${filteredProjects.length} ${t('projects.allProjects').toLowerCase()}`}
         primaryAction={{
           label: t('projects.newProject'),
-          onClick: () => console.log('Create project'),
+          onClick: () => setCreateModalOpen(true),
         }}
       />
 
@@ -190,6 +199,13 @@ export function Projects() {
           </Col>
         ))}
       </Row>
+
+      {/* Create Project Modal */}
+      <CreateProjectModal
+        open={createModalOpen}
+        onClose={() => setCreateModalOpen(false)}
+        onSubmit={handleCreateProject}
+      />
     </PageContainer>
   )
 }
