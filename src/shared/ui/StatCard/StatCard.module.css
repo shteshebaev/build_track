@@ -1,0 +1,162 @@
+.card {
+  border-radius: 16px;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.card.light {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.card.dark {
+  background: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card.light:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.card.dark:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card :global(.ant-card-body) {
+  padding: 20px 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.dark .title {
+  color: #9ca3af;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+  font-size: 18px;
+}
+
+.dark .icon {
+  background: rgba(129, 140, 248, 0.15);
+  color: #818cf8;
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.prefix {
+  font-size: 18px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.dark .prefix {
+  color: #9ca3af;
+}
+
+.value {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.dark .value {
+  color: #f9fafb;
+}
+
+.suffix {
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+.dark .suffix {
+  color: #9ca3af;
+}
+
+.trendRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.trend.positive {
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.dark .trend.positive {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.trend.negative {
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.dark .trend.negative {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.trendLabel {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .card :global(.ant-card-body) {
+    padding: 16px;
+  }
+
+  .value {
+    font-size: 28px;
+  }
+
+  .icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}

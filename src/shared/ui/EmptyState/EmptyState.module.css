@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+:global(.dark) .title {
+  color: #f9fafb;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+:global(.dark) .description {
+  color: #9ca3af;
+}
