@@ -1,5 +1,5 @@
 import { Card, Table, Button, Input, Space, Progress, Tag } from 'antd'
-import { SearchOutlined, PlusOutlined } from '@ant-design/icons'
+import { SearchOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'

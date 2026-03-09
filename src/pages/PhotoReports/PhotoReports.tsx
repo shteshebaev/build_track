@@ -1,5 +1,5 @@
-import { Card, Row, Col, Button, Select, DatePicker, Upload, Image } from 'antd'
-import { CameraOutlined, UploadOutlined, FilterOutlined } from '@ant-design/icons'
+import { Card, Row, Col, Select, DatePicker, Image } from 'antd'
+import { UploadOutlined } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'
 import { useThemeStore } from '@shared/store'

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { Table, Input, Select, Button, Space, Card, Tag, Progress } from 'antd'
+import { Table, Input, Select, Button, Space, Card, Progress } from 'antd'
 import { SearchOutlined, WarningOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
 import { useTranslation } from 'react-i18next'

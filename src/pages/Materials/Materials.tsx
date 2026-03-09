@@ -122,7 +122,7 @@ export function Materials() {
       key: 'actions',
       width: 100,
       align: 'center',
-      render: (_, record: Material) => (
+      render: () => (
         <Button type="link" size="small">
           {t('common.view')}
         </Button>

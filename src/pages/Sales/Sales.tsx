@@ -1,4 +1,4 @@
-import { Card, Row, Col, Table, Tag, Statistic, Select } from 'antd'
+import { Card, Row, Col, Table, Tag } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader, StatCard } from '@shared/ui'
 import { useThemeStore } from '@shared/store'

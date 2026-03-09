@@ -9,11 +9,10 @@ import {
 } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader, StatCard } from '@shared/ui'
-import { formatCurrency, formatNumber, formatPercent } from '@shared/lib'
+import { formatCurrency, formatPercent } from '@shared/lib'
 import { useThemeStore } from '@shared/store'
 import {
   mockDashboardStats,
-  mockConstructionProgressData,
   mockMaterialUsageData,
   mockProjectsProgressData,
   mockProjectStatusData,

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Table, Card, Button, Space, Input, Select, Tag } from 'antd'
-import { SearchOutlined, PlusOutlined } from '@ant-design/icons'
+import { Table, Card, Button, Space, Input } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader, StatusBadge } from '@shared/ui'

@@ -55,7 +55,14 @@ export const mockProjectStatusData = [
   { status: 'Завершён', count: 1, color: '#10B981' },
 ]
 
-export const mockRecentActivity = [
+export const mockRecentActivity: Array<{
+  id: string
+  type: string
+  title: string
+  description: string
+  time: string
+  status: 'success' | 'warning' | 'info' | 'error'
+}> = [
   {
     id: '1',
     type: 'request_approved',

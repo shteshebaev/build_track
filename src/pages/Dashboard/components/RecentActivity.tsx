@@ -35,7 +35,7 @@ export function RecentActivity({ activities, isDark }: RecentActivityProps) {
 
   return (
     <div className={styles.activityList}>
-      {activities.map((activity, index) => (
+      {activities.map((activity) => (
         <div
           key={activity.id}
           className={`${styles.activityItem} ${isDark ? styles.dark : ''}`}

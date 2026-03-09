@@ -45,7 +45,7 @@ export function ProjectStatusChart({ data, isDark }: ProjectStatusChartProps) {
   return (
     <div className={styles.pieChart}>
       <svg viewBox="0 0 200 200" className={styles.pieSvg}>
-        {segments.map((segment, index) => (
+        {segments.map((segment) => (
           <path
             key={segment.status}
             d={createArcPath(segment.startAngle, segment.endAngle, 80)}
