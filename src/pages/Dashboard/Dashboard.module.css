@@ -1,9 +1,14 @@
+/*
+ * Dashboard Styles
+ * Uses CSS custom properties for fluid spacing
+ */
+
 .statsRow {
-  margin-bottom: 24px;
+  margin-bottom: var(--grid-gap-lg, 24px);
 }
 
 .chartsRow {
-  margin-bottom: 24px;
+  margin-bottom: var(--grid-gap-lg, 24px);
 }
 
 .chartCard {
@@ -24,7 +29,7 @@
 
 .chartCard :global(.ant-card-head) {
   border-bottom: 1px solid #e5e7eb;
-  padding: 16px 24px;
+  padding: var(--space-md, 16px) var(--space-lg, 24px);
   min-height: auto;
 }
 
@@ -38,11 +43,11 @@
 }
 
 .chartCard :global(.ant-card-body) {
-  padding: 20px 24px;
+  padding: var(--space-lg, 20px) var(--space-lg, 24px);
 }
 
 @media (max-width: 768px) {
   .chartCard :global(.ant-card-body) {
-    padding: 16px;
+    padding: var(--space-md, 16px);
   }
 }

@@ -1,5 +1,59 @@
+/*
+ * Responsive Page Container
+ * Stripe/Linear style - content fills available space
+ * Max-width only on ultra-wide screens (2560px+)
+ */
+
 .container {
-  max-width: 1600px;
-  margin: 0 auto;
   width: 100%;
+  max-width: 100%;
+
+  /* Animation for smooth layout transitions */
+  transition: max-width 0.3s ease;
+}
+
+/*
+ * Ultra-wide screens (2560px+)
+ * Apply max-width to prevent content from becoming too wide
+ * This improves readability on very large monitors
+ */
+@media (min-width: 2560px) {
+  .container {
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*
+ * Alternative layout mode: Centered on large screens
+ * Uncomment if needed for specific pages
+ */
+.containerCentered {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Full-width variant - no max-width constraints */
+.containerFull {
+  width: 100%;
+  max-width: none;
+}
+
+/* Narrow content variant - for forms, settings, etc. */
+.containerNarrow {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Medium content variant - for detail pages */
+.containerMedium {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }

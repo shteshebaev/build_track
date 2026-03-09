@@ -1,3 +1,8 @@
+/*
+ * AppLayout - Main application layout
+ * Uses CSS custom properties for fluid spacing
+ */
+
 .layout {
   min-height: 100vh;
 }
@@ -13,13 +18,20 @@
 .mainLayout {
   min-height: 100vh;
   background: transparent;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
   margin-top: 64px;
-  padding: 24px;
   min-height: calc(100vh - 64px);
   background: transparent;
+  flex: 1;
+  width: 100%;
+
+  /* Use CSS custom properties for fluid padding */
+  padding: var(--content-padding-y) var(--content-padding-x);
+  padding-bottom: var(--space-3xl);
 }
 
 /* Mobile styles */
@@ -29,6 +41,15 @@
   }
 
   .content {
-    padding: 16px;
+    padding: var(--content-padding-y) var(--content-padding-x);
+    padding-bottom: var(--space-2xl);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .content {
+    padding: 12px;
+    padding-bottom: 20px;
   }
 }

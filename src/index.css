@@ -1,6 +1,80 @@
 /* BuildTrack Global Styles */
 
-/* Reset & Base */
+/* ==========================================================================
+   CSS Custom Properties - Fluid Spacing System
+   Based on 8px grid with fluid scaling
+   ========================================================================== */
+
+:root {
+  /* Fluid spacing - scales with viewport */
+  --space-xs: clamp(4px, 0.5vw, 8px);
+  --space-sm: clamp(8px, 1vw, 12px);
+  --space-md: clamp(12px, 1.5vw, 16px);
+  --space-lg: clamp(16px, 2vw, 24px);
+  --space-xl: clamp(20px, 2.5vw, 32px);
+  --space-2xl: clamp(24px, 3vw, 40px);
+  --space-3xl: clamp(32px, 4vw, 48px);
+  --space-4xl: clamp(40px, 5vw, 64px);
+
+  /* Content padding - horizontal */
+  --content-padding-x: clamp(20px, 3vw, 48px);
+  /* Content padding - vertical */
+  --content-padding-y: clamp(16px, 2vw, 32px);
+
+  /* Grid gaps */
+  --grid-gap-sm: clamp(12px, 1.5vw, 16px);
+  --grid-gap-md: clamp(16px, 2vw, 20px);
+  --grid-gap-lg: clamp(20px, 2.5vw, 24px);
+
+  /* Container widths */
+  --container-narrow: 960px;
+  --container-medium: 1280px;
+  --container-wide: 1600px;
+  --container-max: 1800px;
+
+  /* Sidebar width */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 80px;
+}
+
+/* Large screens - increase spacing */
+@media (min-width: 1920px) {
+  :root {
+    --content-padding-x: clamp(32px, 3vw, 64px);
+    --content-padding-y: clamp(24px, 2vw, 40px);
+    --grid-gap-md: clamp(20px, 2vw, 24px);
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 2560px) {
+  :root {
+    --content-padding-x: 80px;
+    --content-padding-y: 40px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --content-padding-x: 24px;
+    --content-padding-y: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --content-padding-x: 16px;
+    --content-padding-y: 16px;
+    --grid-gap-md: 16px;
+  }
+}
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+
 *,
 *::before,
 *::after {
