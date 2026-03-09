@@ -51,17 +51,19 @@ export function Dashboard() {
       {/* KPI Cards */}
       <Row gutter={[20, 20]} className={styles.statsRow}>
         <Col xs={24} sm={12} lg={8} xl={4}>
-          <StatCard
-            title={t('dashboard.totalProjects')}
-            value={stats.totalProjects}
-            icon={<ProjectOutlined />}
-            trend={stats.projectsTrend}
-            trendLabel={t('dashboard.vsLastMonth')}
-          />
+          <div className={styles.cardWrapper}>
+            <StatCard
+              title={t('dashboard.totalProjects')}
+              value={stats.totalProjects}
+              icon={<ProjectOutlined />}
+              trend={stats.projectsTrend}
+              trendLabel={t('dashboard.vsLastMonth')}
+            />
+          </div>
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
           <Tooltip title={warehouseValue.full} placement="bottom">
-            <div>
+            <div className={styles.cardWrapper}>
               <StatCard
                 title={t('dashboard.warehouseValue')}
                 value={warehouseValue.display}
@@ -74,7 +76,7 @@ export function Dashboard() {
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
           <Tooltip title={materialsValue.full} placement="bottom">
-            <div>
+            <div className={styles.cardWrapper}>
               <StatCard
                 title={t('dashboard.materialsUsed')}
                 value={materialsValue.display}
@@ -86,26 +88,30 @@ export function Dashboard() {
           </Tooltip>
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
-          <StatCard
-            title={t('dashboard.activeRequests')}
-            value={stats.activeRequests}
-            icon={<FileTextOutlined />}
-            trend={stats.requestsTrend}
-            trendLabel={t('dashboard.vsLastMonth')}
-          />
+          <div className={styles.cardWrapper}>
+            <StatCard
+              title={t('dashboard.activeRequests')}
+              value={stats.activeRequests}
+              icon={<FileTextOutlined />}
+              trend={stats.requestsTrend}
+              trendLabel={t('dashboard.vsLastMonth')}
+            />
+          </div>
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
-          <StatCard
-            title={t('dashboard.constructionProgress')}
-            value={formatPercent(stats.avgProgress)}
-            icon={<BarChartOutlined />}
-            trend={stats.progressTrend}
-            trendLabel={t('dashboard.vsLastMonth')}
-          />
+          <div className={styles.cardWrapper}>
+            <StatCard
+              title={t('dashboard.constructionProgress')}
+              value={formatPercent(stats.avgProgress)}
+              icon={<BarChartOutlined />}
+              trend={stats.progressTrend}
+              trendLabel={t('dashboard.vsLastMonth')}
+            />
+          </div>
         </Col>
         <Col xs={24} sm={12} lg={8} xl={4}>
           <Tooltip title={salesValue.full} placement="bottom">
-            <div>
+            <div className={styles.cardWrapper}>
               <StatCard
                 title={t('dashboard.salesRevenue')}
                 value={salesValue.display}
