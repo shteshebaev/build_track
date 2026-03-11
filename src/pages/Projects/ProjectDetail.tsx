@@ -21,7 +21,7 @@ import { PageContainer, StatusBadge, EmptyState } from '@shared/ui'
 import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
 import { formatDate } from '@shared/lib'
 import { mockProjects } from '@mocks'
-import { EditProjectModal, type EditProjectFormValues, ConstructionTab } from './components'
+import { EditProjectModal, type EditProjectFormValues, ConstructionTab, EstimatesTab } from './components'
 import styles from './ProjectDetail.module.css'
 
 export function ProjectDetail() {
@@ -309,12 +309,7 @@ export function ProjectDetail() {
           {t('projects.tabs.estimates')}
         </span>
       ),
-      children: (
-        <EmptyState
-          title="Сметы"
-          description="Здесь будут отображаться сметы проекта"
-        />
-      ),
+      children: <EstimatesTab projectId={project.id} />,
     },
     {
       key: 'warehouse',
