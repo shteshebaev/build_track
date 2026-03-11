@@ -21,7 +21,7 @@ import { PageContainer, StatusBadge, EmptyState } from '@shared/ui'
 import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
 import { formatDate } from '@shared/lib'
 import { mockProjects } from '@mocks'
-import { EditProjectModal, type EditProjectFormValues, ConstructionTab, EstimatesTab } from './components'
+import { EditProjectModal, type EditProjectFormValues, ConstructionTab, EstimatesTab, WarehouseTab } from './components'
 import styles from './ProjectDetail.module.css'
 
 export function ProjectDetail() {
@@ -319,12 +319,7 @@ export function ProjectDetail() {
           {t('projects.tabs.warehouse')}
         </span>
       ),
-      children: (
-        <EmptyState
-          title="Склад"
-          description="Здесь будут отображаться материалы на складе проекта"
-        />
-      ),
+      children: <WarehouseTab projectId={project.id} />,
     },
     {
       key: 'documents',
