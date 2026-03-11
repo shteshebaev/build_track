@@ -8,6 +8,7 @@ import { useThemeStore } from '@shared/store'
 import { formatCurrency } from '@shared/lib'
 import { mockMaterials, materialCategories } from '@mocks'
 import type { Material, MaterialCategory } from '@shared/types'
+import { CreateMaterialModal, type MaterialFormValues } from './components'
 import styles from './Materials.module.css'
 
 export function Materials() {
@@ -16,6 +17,7 @@ export function Materials() {
 
   const [search, setSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState<MaterialCategory | 'all'>('all')
+  const [createModalOpen, setCreateModalOpen] = useState(false)
 
   const filteredMaterials = useMemo(() => {
     return mockMaterials.filter((material) => {
@@ -45,6 +47,12 @@ export function Materials() {
       other: 'default',
     }
     return colors[category]
+  }
+
+  const handleCreateMaterial = (values: MaterialFormValues) => {
+    console.log('Creating material:', values)
+    // Here you would typically make an API call to create the material
+    setCreateModalOpen(false)
   }
 
   const columns: ColumnsType<Material> = [
@@ -137,7 +145,7 @@ export function Materials() {
         subtitle={`${filteredMaterials.length} материалов`}
         primaryAction={{
           label: t('materials.newMaterial'),
-          onClick: () => console.log('Create material'),
+          onClick: () => setCreateModalOpen(true),
         }}
       />
 
@@ -185,6 +193,13 @@ export function Materials() {
           scroll={{ x: 900 }}
         />
       </Card>
+
+      {/* Create Material Modal */}
+      <CreateMaterialModal
+        open={createModalOpen}
+        onClose={() => setCreateModalOpen(false)}
+        onSubmit={handleCreateMaterial}
+      />
     </PageContainer>
   )
 }
