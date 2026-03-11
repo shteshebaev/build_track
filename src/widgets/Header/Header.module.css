@@ -2,7 +2,6 @@
   position: fixed;
   top: 0;
   right: 0;
-  left: 260px;
   z-index: 99;
   display: flex;
   align-items: center;
@@ -23,11 +22,6 @@
 .header.dark {
   background: rgba(17, 24, 39, 0.8);
   --color-border: #374151;
-}
-
-/* Adjust for collapsed sidebar */
-:global(.ant-layout-sider-collapsed) ~ .header {
-  left: 80px;
 }
 
 .left {
@@ -214,7 +208,7 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .header {
-    left: 0;
+    left: 0 !important;
     padding: 0 16px;
   }
 

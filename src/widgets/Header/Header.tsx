@@ -25,7 +25,11 @@ import { useThemeStore, useAppStore } from '@shared/store'
 import type { MenuProps } from 'antd'
 import styles from './Header.module.css'
 
-export function Header() {
+interface HeaderProps {
+  sidebarWidth: number
+}
+
+export function Header({ sidebarWidth }: HeaderProps) {
   const { t, i18n } = useTranslation()
   const location = useLocation()
   const { isDark, toggleTheme } = useThemeStore()
@@ -144,7 +148,10 @@ export function Header() {
   ]
 
   return (
-    <header className={`${styles.header} ${isDark ? styles.dark : styles.light}`}>
+    <header
+      className={`${styles.header} ${isDark ? styles.dark : styles.light}`}
+      style={{ left: sidebarWidth }}
+    >
       <div className={styles.left}>
         <Breadcrumb
           items={[

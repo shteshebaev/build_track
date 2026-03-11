@@ -14,18 +14,13 @@ interface AppLayoutProps {
 export function AppLayout({ children }: AppLayoutProps) {
   const { sidebarCollapsed } = useAppStore()
   const { isDark } = useThemeStore()
+  const sidebarWidth = sidebarCollapsed ? 80 : 260
 
   return (
     <Layout className={`${styles.layout} ${isDark ? styles.dark : styles.light}`}>
       <Sidebar />
-      <Layout
-        className={styles.mainLayout}
-        style={{
-          marginLeft: sidebarCollapsed ? 80 : 260,
-          transition: 'margin-left 0.2s ease',
-        }}
-      >
-        <Header />
+      <Layout className={styles.mainLayout} style={{ marginLeft: sidebarWidth }}>
+        <Header sidebarWidth={sidebarWidth} />
         <Content className={styles.content}>{children}</Content>
       </Layout>
     </Layout>
