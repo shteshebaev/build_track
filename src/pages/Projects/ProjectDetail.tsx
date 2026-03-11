@@ -21,7 +21,7 @@ import { PageContainer, StatusBadge, EmptyState } from '@shared/ui'
 import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
 import { formatDate } from '@shared/lib'
 import { mockProjects } from '@mocks'
-import { EditProjectModal, type EditProjectFormValues } from './components'
+import { EditProjectModal, type EditProjectFormValues, ConstructionTab } from './components'
 import styles from './ProjectDetail.module.css'
 
 export function ProjectDetail() {
@@ -299,12 +299,7 @@ export function ProjectDetail() {
           {t('projects.tabs.construction')}
         </span>
       ),
-      children: (
-        <EmptyState
-          title="Этапы строительства"
-          description="Здесь будет отображаться прогресс строительства"
-        />
-      ),
+      children: <ConstructionTab projectId={project.id} />,
     },
     {
       key: 'estimates',
