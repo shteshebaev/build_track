@@ -8,6 +8,16 @@ import { useThemeStore } from '@shared/store'
 import { formatCurrency, formatNumber } from '@shared/lib'
 import { mockWarehouseItems, getStockStatus } from '@mocks'
 import type { WarehouseItem } from '@shared/types'
+import {
+  ReceiptModal,
+  IssueModal,
+  TransferModal,
+  InventoryModal,
+  type ReceiptFormValues,
+  type IssueFormValues,
+  type TransferFormValues,
+  type InventoryFormValues,
+} from './components'
 import styles from './Warehouse.module.css'
 
 export function Warehouse() {
@@ -16,6 +26,12 @@ export function Warehouse() {
 
   const [search, setSearch] = useState('')
   const [stockFilter, setStockFilter] = useState<string>('all')
+
+  // Modal states
+  const [receiptModalOpen, setReceiptModalOpen] = useState(false)
+  const [issueModalOpen, setIssueModalOpen] = useState(false)
+  const [transferModalOpen, setTransferModalOpen] = useState(false)
+  const [inventoryModalOpen, setInventoryModalOpen] = useState(false)
 
   const filteredItems = useMemo(() => {
     return mockWarehouseItems.filter((item) => {
@@ -169,6 +185,27 @@ export function Warehouse() {
     }, 0)
   }, [filteredItems])
 
+  // Modal handlers
+  const handleReceipt = (values: ReceiptFormValues) => {
+    console.log('Receipt:', values)
+    setReceiptModalOpen(false)
+  }
+
+  const handleIssue = (values: IssueFormValues) => {
+    console.log('Issue:', values)
+    setIssueModalOpen(false)
+  }
+
+  const handleTransfer = (values: TransferFormValues) => {
+    console.log('Transfer:', values)
+    setTransferModalOpen(false)
+  }
+
+  const handleInventory = (values: InventoryFormValues) => {
+    console.log('Inventory:', values)
+    setInventoryModalOpen(false)
+  }
+
   return (
     <PageContainer>
       <PageHeader
@@ -176,14 +213,20 @@ export function Warehouse() {
         subtitle={`${filteredItems.length} позиций на сумму ${formatCurrency(totalValue)}`}
         actions={
           <Space>
-            <Button>{t('warehouse.receipt')}</Button>
-            <Button>{t('warehouse.issue')}</Button>
-            <Button>{t('warehouse.transfer')}</Button>
+            <Button onClick={() => setReceiptModalOpen(true)}>
+              {t('warehouse.receipt')}
+            </Button>
+            <Button onClick={() => setIssueModalOpen(true)}>
+              {t('warehouse.issue')}
+            </Button>
+            <Button onClick={() => setTransferModalOpen(true)}>
+              {t('warehouse.transfer')}
+            </Button>
           </Space>
         }
         primaryAction={{
           label: t('warehouse.audit'),
-          onClick: () => console.log('Start audit'),
+          onClick: () => setInventoryModalOpen(true),
         }}
       />
 
@@ -222,6 +265,28 @@ export function Warehouse() {
           scroll={{ x: 1100 }}
         />
       </Card>
+
+      {/* Modals */}
+      <ReceiptModal
+        open={receiptModalOpen}
+        onClose={() => setReceiptModalOpen(false)}
+        onSubmit={handleReceipt}
+      />
+      <IssueModal
+        open={issueModalOpen}
+        onClose={() => setIssueModalOpen(false)}
+        onSubmit={handleIssue}
+      />
+      <TransferModal
+        open={transferModalOpen}
+        onClose={() => setTransferModalOpen(false)}
+        onSubmit={handleTransfer}
+      />
+      <InventoryModal
+        open={inventoryModalOpen}
+        onClose={() => setInventoryModalOpen(false)}
+        onSubmit={handleInventory}
+      />
     </PageContainer>
   )
 }
