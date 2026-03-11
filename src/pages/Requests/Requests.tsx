@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader, StatusBadge } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
 import { formatDate } from '@shared/lib'
+import { CreateRequestModal, type RequestFormValues } from './components'
 import styles from './Requests.module.css'
 
 interface Request {
@@ -31,6 +32,12 @@ export function Requests() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
   const [search, setSearch] = useState('')
+  const [createModalOpen, setCreateModalOpen] = useState(false)
+
+  const handleCreateRequest = (values: RequestFormValues) => {
+    console.log('New request:', values)
+    setCreateModalOpen(false)
+  }
 
   const getStatusLabel = (status: string) => {
     const labels: Record<string, string> = {
@@ -60,7 +67,7 @@ export function Requests() {
       <PageHeader
         title={t('requests.title')}
         subtitle={`${mockRequests.length} заявок`}
-        primaryAction={{ label: t('requests.newRequest'), onClick: () => console.log('New request') }}
+        primaryAction={{ label: t('requests.newRequest'), onClick: () => setCreateModalOpen(true) }}
       />
       <Card className={`${styles.card} ${isDark ? styles.dark : ''}`}>
         <Space style={{ marginBottom: 16 }}>
@@ -68,6 +75,13 @@ export function Requests() {
         </Space>
         <Table dataSource={mockRequests} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} scroll={{ x: 900 }} />
       </Card>
+
+      {/* Create Request Modal */}
+      <CreateRequestModal
+        open={createModalOpen}
+        onClose={() => setCreateModalOpen(false)}
+        onSubmit={handleCreateRequest}
+      />
     </PageContainer>
   )
 }

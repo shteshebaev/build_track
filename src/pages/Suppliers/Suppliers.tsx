@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { Table, Card, Button, Rate } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
+import { CreateSupplierModal, type SupplierFormValues } from './components'
 
 interface Supplier {
   id: string
@@ -22,6 +24,11 @@ const mockSuppliers: Supplier[] = [
 export function Suppliers() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleCreateSupplier = (values: SupplierFormValues) => {
+    console.log('New supplier:', values)
+  }
 
   const columns: ColumnsType<Supplier> = [
     { title: t('suppliers.companyName'), dataIndex: 'name', key: 'name' },
@@ -34,10 +41,11 @@ export function Suppliers() {
 
   return (
     <PageContainer>
-      <PageHeader title={t('suppliers.title')} primaryAction={{ label: t('suppliers.newSupplier'), onClick: () => {} }} />
+      <PageHeader title={t('suppliers.title')} primaryAction={{ label: t('suppliers.newSupplier'), onClick: () => setModalOpen(true) }} />
       <Card style={{ borderRadius: 16, border: 'none', background: isDark ? '#1f2937' : '#fff' }}>
         <Table dataSource={mockSuppliers} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
       </Card>
+      <CreateSupplierModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleCreateSupplier} />
     </PageContainer>
   )
 }

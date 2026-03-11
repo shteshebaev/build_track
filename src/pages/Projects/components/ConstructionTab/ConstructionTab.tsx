@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Progress, Tag, Collapse, Row, Col, Tooltip, Button } from 'antd'
+import { Progress, Tag, Row, Col, Tooltip, Button } from 'antd'
 import {
   CheckCircleFilled,
   ClockCircleFilled,
@@ -20,7 +20,7 @@ interface ConstructionTabProps {
   projectId: string
 }
 
-export function ConstructionTab({ projectId }: ConstructionTabProps) {
+export function ConstructionTab(_props: ConstructionTabProps) {
   const { isDark } = useThemeStore()
   const { unit } = useCurrencyStore()
   const [expandedStages, setExpandedStages] = useState<string[]>(['4', '5', '6'])

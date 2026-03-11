@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { Card, Table, Button, Input, Space, Avatar, Tag } from 'antd'
 import { SearchOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
+import { CreateUserModal, type UserFormValues } from './components'
 
 interface User {
   id: string
@@ -24,6 +26,11 @@ const mockUsers: User[] = [
 export function Users() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleCreateUser = (values: UserFormValues) => {
+    console.log('New user:', values)
+  }
 
   const getRoleLabel = (role: string) => {
     const labels: Record<string, string> = {
@@ -53,13 +60,14 @@ export function Users() {
 
   return (
     <PageContainer>
-      <PageHeader title={t('navigation.users')} primaryAction={{ label: 'Добавить', icon: <UserAddOutlined />, onClick: () => {} }} />
+      <PageHeader title={t('navigation.users')} primaryAction={{ label: 'Добавить', icon: <UserAddOutlined />, onClick: () => setModalOpen(true) }} />
       <Card style={{ borderRadius: 16, border: 'none', background: isDark ? '#1f2937' : '#fff' }}>
         <Space style={{ marginBottom: 16 }}>
           <Input placeholder={t('common.search')} prefix={<SearchOutlined />} style={{ width: 280 }} allowClear />
         </Space>
         <Table dataSource={mockUsers} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
       </Card>
+      <CreateUserModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleCreateUser} />
     </PageContainer>
   )
 }

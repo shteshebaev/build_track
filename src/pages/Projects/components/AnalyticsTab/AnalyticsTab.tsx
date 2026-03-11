@@ -4,15 +4,13 @@ import {
   ArrowDownOutlined,
   MinusOutlined,
   WarningOutlined,
-  CheckCircleOutlined,
-  ClockCircleOutlined,
   DollarOutlined,
   TeamOutlined,
   BarChartOutlined,
   PieChartOutlined,
 } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
-import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
+import { useThemeStore, useCurrencyStore } from '@shared/store'
 import {
   mockBudgetData,
   mockProgressData,
@@ -21,7 +19,6 @@ import {
   mockRisks,
   mockKPIs,
   mockMonthlyExpenses,
-  mockWorkforceData,
   type RiskItem,
 } from '@mocks/projectAnalytics'
 import styles from './AnalyticsTab.module.css'
@@ -30,14 +27,9 @@ interface AnalyticsTabProps {
   projectId: string
 }
 
-export function AnalyticsTab({ projectId }: AnalyticsTabProps) {
+export function AnalyticsTab(_props: AnalyticsTabProps) {
   const { isDark } = useThemeStore()
-  const { unit } = useCurrencyStore()
-
-  const formatCost = (value: number) => {
-    const { formatted, suffix } = formatCurrencyCompact(value * 1000000, unit)
-    return formatted + suffix
-  }
+  useCurrencyStore()
 
   const currentProgress = mockProgressData[mockProgressData.length - 1]
   const currentBudget = mockBudgetData[mockBudgetData.length - 1]
@@ -49,14 +41,6 @@ export function AnalyticsTab({ projectId }: AnalyticsTabProps) {
       case 'up': return <ArrowUpOutlined style={{ color: '#10B981' }} />
       case 'down': return <ArrowDownOutlined style={{ color: '#EF4444' }} />
       default: return <MinusOutlined style={{ color: '#6B7280' }} />
-    }
-  }
-
-  const getRiskColor = (level: string) => {
-    switch (level) {
-      case 'high': return '#EF4444'
-      case 'medium': return '#F59E0B'
-      default: return '#10B981'
     }
   }
 

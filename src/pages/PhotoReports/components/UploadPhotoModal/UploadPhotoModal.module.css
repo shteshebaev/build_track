@@ -1,0 +1,46 @@
+.modal :global(.ant-modal-content) { border-radius: 20px; overflow: hidden; padding: 0; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); background: #fff; }
+.modal.dark :global(.ant-modal-content) { background: #1f2937; }
+.modal :global(.ant-modal-body) { padding: 0; }
+.closeButton { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(0, 0, 0, 0.05); color: #6b7280; font-size: 14px; transition: all 0.2s; }
+.closeButton:hover { background: rgba(0, 0, 0, 0.1); }
+.modal.dark .closeButton { background: rgba(255, 255, 255, 0.1); color: #9ca3af; }
+.header { text-align: center; padding: 32px 24px 24px; border-bottom: 1px solid #e5e7eb; background: linear-gradient(180deg, #fce7f3 0%, #fff 100%); }
+.modal.dark .header { border-bottom-color: #374151; background: linear-gradient(180deg, rgba(236, 72, 153, 0.15) 0%, #1f2937 100%); }
+.headerIcon { width: 64px; height: 64px; border-radius: 18px; background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; color: #fff; box-shadow: 0 8px 16px rgba(236, 72, 153, 0.3); }
+.title { font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 4px; }
+.modal.dark .title { color: #f9fafb; }
+.subtitle { font-size: 14px; color: #6b7280; margin: 0; }
+.formContent { padding: 24px; max-height: 60vh; overflow-y: auto; }
+.modal.dark .formContent { background: #1f2937; }
+.inputGroup { margin-bottom: 16px; }
+.inputLabel { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.modal.dark .inputLabel { color: #e5e7eb; }
+.required { color: #ef4444; }
+.select { width: 100%; }
+.select :global(.ant-select-selector) { border-radius: 12px !important; border: 1.5px solid #e5e7eb !important; min-height: 44px !important; }
+.select :global(.ant-select-selector):hover { border-color: #ec4899 !important; }
+.modal.dark .select :global(.ant-select-selector) { background: #374151 !important; border-color: #4b5563 !important; }
+.textarea { border-radius: 12px !important; border: 1.5px solid #e5e7eb !important; }
+.textarea:hover, .textarea:focus { border-color: #ec4899 !important; }
+.modal.dark .textarea { background: #374151 !important; border-color: #4b5563 !important; color: #f9fafb !important; }
+.upload { display: flex; flex-wrap: wrap; gap: 8px; }
+.upload :global(.ant-upload-list) { display: flex; flex-wrap: wrap; gap: 8px; }
+.upload :global(.ant-upload-select) { width: 100px !important; height: 100px !important; border-radius: 12px !important; border: 2px dashed #e5e7eb !important; background: #f9fafb !important; margin: 0 !important; }
+.upload :global(.ant-upload-select:hover) { border-color: #ec4899 !important; }
+.modal.dark .upload :global(.ant-upload-select) { background: #374151 !important; border-color: #4b5563 !important; }
+.upload :global(.ant-upload-list-item-container) { width: 100px !important; height: 100px !important; margin: 0 !important; }
+.uploadButton { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px; gap: 4px; }
+.uploadItem { position: relative; width: 100px; height: 100px; border-radius: 12px; overflow: hidden; }
+.uploadThumb { width: 100%; height: 100%; object-fit: cover; }
+.removeBtn { position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; border-radius: 50%; background: rgba(0, 0, 0, 0.5); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.removeBtn:hover { background: #ef4444; }
+.uploadHint { font-size: 12px; color: #9ca3af; margin-top: 8px; }
+.footer { display: flex; justify-content: flex-end; gap: 12px; padding: 20px 24px; border-top: 1px solid #e5e7eb; background: #f9fafb; }
+.modal.dark .footer { border-top-color: #374151; background: #111827; }
+.button { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+.primaryButton { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); color: #fff; min-width: 140px; }
+.primaryButton:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4); }
+.primaryButton.loading { opacity: 0.7; cursor: not-allowed; }
+.secondaryButton { background: #fff; color: #374151; border: 1.5px solid #e5e7eb; }
+.secondaryButton:hover { background: #f9fafb; }
+.modal.dark .secondaryButton { background: #374151; color: #f9fafb; border-color: #4b5563; }

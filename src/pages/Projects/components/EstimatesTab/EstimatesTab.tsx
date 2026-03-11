@@ -25,7 +25,7 @@ interface EstimatesTabProps {
   projectId: string
 }
 
-export function EstimatesTab({ projectId }: EstimatesTabProps) {
+export function EstimatesTab(_props: EstimatesTabProps) {
   const { isDark } = useThemeStore()
   const { unit } = useCurrencyStore()
   const [selectedEstimate, setSelectedEstimate] = useState<ProjectEstimate | null>(null)
@@ -225,7 +225,6 @@ export function EstimatesTab({ projectId }: EstimatesTabProps) {
     const workItems = section.items.filter(i => i.category === 'work')
     const materialItems = section.items.filter(i => i.category === 'material')
     const equipmentItems = section.items.filter(i => i.category === 'equipment')
-    const otherItems = section.items.filter(i => i.category === 'other')
 
     const workTotal = workItems.reduce((acc, i) => acc + i.totalPrice, 0)
     const materialTotal = materialItems.reduce((acc, i) => acc + i.totalPrice, 0)

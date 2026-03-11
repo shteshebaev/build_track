@@ -1,0 +1,52 @@
+.modal :global(.ant-modal-content) { border-radius: 20px; overflow: hidden; padding: 0; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); background: #fff; }
+.modal.dark :global(.ant-modal-content) { background: #1f2937; }
+.modal :global(.ant-modal-body) { padding: 0; }
+.closeButton { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(0, 0, 0, 0.05); color: #6b7280; font-size: 14px; transition: all 0.2s; }
+.closeButton:hover { background: rgba(0, 0, 0, 0.1); }
+.modal.dark .closeButton { background: rgba(255, 255, 255, 0.1); color: #9ca3af; }
+.header { text-align: center; padding: 32px 24px 24px; border-bottom: 1px solid #e5e7eb; background: linear-gradient(180deg, #e0f2fe 0%, #fff 100%); }
+.modal.dark .header { border-bottom-color: #374151; background: linear-gradient(180deg, rgba(14, 165, 233, 0.15) 0%, #1f2937 100%); }
+.headerIcon { width: 64px; height: 64px; border-radius: 18px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; color: #fff; box-shadow: 0 8px 16px rgba(14, 165, 233, 0.3); }
+.title { font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 4px; }
+.modal.dark .title { color: #f9fafb; }
+.subtitle { font-size: 14px; color: #6b7280; margin: 0; }
+.formContent { padding: 24px; max-height: 60vh; overflow-y: auto; }
+.modal.dark .formContent { background: #1f2937; }
+.inputGroup { margin-bottom: 16px; }
+.inputLabel { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.modal.dark .inputLabel { color: #e5e7eb; }
+.required { color: #ef4444; }
+.input { border-radius: 12px !important; border: 1.5px solid #e5e7eb !important; height: 44px; }
+.input:hover, .input:focus { border-color: #0ea5e9 !important; }
+.modal.dark .input { background: #374151 !important; border-color: #4b5563 !important; color: #f9fafb !important; }
+.select { width: 100%; }
+.select :global(.ant-select-selector) { border-radius: 12px !important; border: 1.5px solid #e5e7eb !important; min-height: 44px !important; }
+.select :global(.ant-select-selector):hover { border-color: #0ea5e9 !important; }
+.modal.dark .select :global(.ant-select-selector) { background: #374151 !important; border-color: #4b5563 !important; }
+.textarea { border-radius: 12px !important; border: 1.5px solid #e5e7eb !important; }
+.textarea:hover, .textarea:focus { border-color: #0ea5e9 !important; }
+.modal.dark .textarea { background: #374151 !important; border-color: #4b5563 !important; color: #f9fafb !important; }
+.dragger { border-radius: 12px !important; border: 2px dashed #e5e7eb !important; background: #f9fafb !important; padding: 24px !important; }
+.dragger:hover { border-color: #0ea5e9 !important; }
+.modal.dark .dragger { background: #374151 !important; border-color: #4b5563 !important; }
+.draggerIcon { font-size: 40px; color: #0ea5e9; margin-bottom: 8px; }
+.draggerText { font-size: 15px; font-weight: 600; color: #374151; margin: 0; }
+.modal.dark .draggerText { color: #f9fafb; }
+.draggerHint { font-size: 13px; color: #9ca3af; margin: 4px 0 0; }
+.fileList { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.fileItem { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #f9fafb; border-radius: 10px; }
+.modal.dark .fileItem { background: #374151; }
+.fileIcon { font-size: 20px; }
+.fileName { flex: 1; font-size: 14px; color: #374151; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.modal.dark .fileName { color: #f9fafb; }
+.fileRemove { background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; font-size: 12px; }
+.fileRemove:hover { color: #ef4444; }
+.footer { display: flex; justify-content: flex-end; gap: 12px; padding: 20px 24px; border-top: 1px solid #e5e7eb; background: #f9fafb; }
+.modal.dark .footer { border-top-color: #374151; background: #111827; }
+.button { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+.primaryButton { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: #fff; min-width: 120px; }
+.primaryButton:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4); }
+.primaryButton.loading { opacity: 0.7; cursor: not-allowed; }
+.secondaryButton { background: #fff; color: #374151; border: 1.5px solid #e5e7eb; }
+.secondaryButton:hover { background: #f9fafb; }
+.modal.dark .secondaryButton { background: #374151; color: #f9fafb; border-color: #4b5563; }

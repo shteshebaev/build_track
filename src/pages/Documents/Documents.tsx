@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Card, Table, Button, Input, Space } from 'antd'
 import { SearchOutlined, UploadOutlined, FolderOutlined, FileOutlined, FilePdfOutlined, FileExcelOutlined, FileWordOutlined, MoreOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
@@ -5,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
 import { formatDate } from '@shared/lib'
+import { UploadDocumentModal, type DocumentFormValues } from './components'
 
 interface Document {
   id: string
@@ -26,6 +28,11 @@ const mockDocuments: Document[] = [
 export function Documents() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleUploadDocument = (values: DocumentFormValues) => {
+    console.log('Upload document:', values)
+  }
 
   const getFileIcon = (type: string) => {
     const icons: Record<string, React.ReactNode> = {
@@ -50,13 +57,14 @@ export function Documents() {
 
   return (
     <PageContainer>
-      <PageHeader title={t('navigation.documents')} primaryAction={{ label: 'Загрузить', icon: <UploadOutlined />, onClick: () => {} }} />
+      <PageHeader title={t('navigation.documents')} primaryAction={{ label: 'Загрузить', icon: <UploadOutlined />, onClick: () => setModalOpen(true) }} />
       <Card style={{ borderRadius: 16, border: 'none', background: isDark ? '#1f2937' : '#fff' }}>
         <Space style={{ marginBottom: 16 }}>
           <Input placeholder={t('common.search')} prefix={<SearchOutlined />} style={{ width: 280 }} allowClear />
         </Space>
         <Table dataSource={mockDocuments} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
       </Card>
+      <UploadDocumentModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleUploadDocument} />
     </PageContainer>
   )
 }

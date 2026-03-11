@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { Card, Row, Col, Select, DatePicker, Image } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
 import { formatDate } from '@shared/lib'
+import { UploadPhotoModal, type PhotoFormValues } from './components'
 import styles from './PhotoReports.module.css'
 
 const mockPhotos = [
@@ -16,13 +18,18 @@ const mockPhotos = [
 export function PhotoReports() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleUploadPhoto = (values: PhotoFormValues) => {
+    console.log('Upload photos:', values)
+  }
 
   return (
     <PageContainer>
       <PageHeader
         title={t('navigation.photoReports')}
         subtitle={`${mockPhotos.length} фотографий`}
-        primaryAction={{ label: 'Загрузить фото', icon: <UploadOutlined />, onClick: () => {} }}
+        primaryAction={{ label: 'Загрузить фото', icon: <UploadOutlined />, onClick: () => setModalOpen(true) }}
       />
 
       <Card className={`${styles.filtersCard} ${isDark ? styles.dark : ''}`} style={{ marginBottom: 24 }}>
@@ -49,6 +56,8 @@ export function PhotoReports() {
           </Col>
         ))}
       </Row>
+
+      <UploadPhotoModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleUploadPhoto} />
     </PageContainer>
   )
 }

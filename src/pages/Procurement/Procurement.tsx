@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { Table, Card } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import { useTranslation } from 'react-i18next'
 import { PageContainer, PageHeader, StatusBadge } from '@shared/ui'
 import { useThemeStore } from '@shared/store'
 import { formatDate, formatCurrency } from '@shared/lib'
+import { CreateOrderModal, type OrderFormValues } from './components'
 
 interface Order {
   id: string
@@ -24,6 +26,11 @@ const mockOrders: Order[] = [
 export function Procurement() {
   const { t } = useTranslation()
   const { isDark } = useThemeStore()
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleCreateOrder = (values: OrderFormValues) => {
+    console.log('New order:', values)
+  }
 
   const getStatusLabel = (status: string) => {
     const labels: Record<string, string> = { draft: 'Черновик', sent: 'Отправлен', confirmed: 'Подтверждён', shipped: 'Отгружен', delivered: 'Доставлен' }
@@ -41,10 +48,11 @@ export function Procurement() {
 
   return (
     <PageContainer>
-      <PageHeader title={t('procurement.title')} primaryAction={{ label: t('procurement.newOrder'), onClick: () => {} }} />
+      <PageHeader title={t('procurement.title')} primaryAction={{ label: t('procurement.newOrder'), onClick: () => setModalOpen(true) }} />
       <Card style={{ borderRadius: 16, border: 'none', background: isDark ? '#1f2937' : '#fff' }}>
         <Table dataSource={mockOrders} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
       </Card>
+      <CreateOrderModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleCreateOrder} />
     </PageContainer>
   )
 }

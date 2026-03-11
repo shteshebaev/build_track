@@ -20,7 +20,6 @@ import {
   CompassOutlined,
   CameraOutlined,
   ClockCircleOutlined,
-  UserOutlined,
   CheckCircleFilled,
 } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
@@ -31,7 +30,6 @@ import {
   mockProjectDocuments,
   mockDocumentFolders,
   type ProjectDocument,
-  type DocumentFolder,
 } from '@mocks/projectDocuments'
 import styles from './DocumentsTab.module.css'
 
@@ -39,7 +37,7 @@ interface DocumentsTabProps {
   projectId: string
 }
 
-export function DocumentsTab({ projectId }: DocumentsTabProps) {
+export function DocumentsTab(_props: DocumentsTabProps) {
   const { isDark } = useThemeStore()
   const [searchText, setSearchText] = useState('')
   const [selectedFolder, setSelectedFolder] = useState<string>('all')

@@ -15,7 +15,6 @@ import {
   TagOutlined,
   DollarOutlined,
   InboxOutlined,
-  FileTextOutlined,
 } from '@ant-design/icons'
 import { useThemeStore } from '@shared/store'
 import type { MaterialCategory } from '@shared/types'
@@ -221,7 +220,7 @@ export function CreateMaterialModal({ open, onClose, onSubmit }: CreateMaterialM
                       size="large"
                       className={styles.inputNumber}
                       formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-                      parser={(value) => value!.replace(/\s/g, '') as unknown as number}
+                      parser={(value) => (value ? Number(value.replace(/\s/g, '')) : 0) as 0}
                       addonAfter="UZS"
                       prefix={<DollarOutlined className={styles.inputIcon} />}
                       min={0}

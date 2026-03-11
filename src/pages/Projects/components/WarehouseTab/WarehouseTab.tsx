@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Table, Tag, Button, Row, Col, Input, Select, Progress, Timeline, Tooltip, Segmented } from 'antd'
+import { Table, Tag, Row, Col, Input, Select, Progress, Timeline, Tooltip } from 'antd'
 import {
   SearchOutlined,
   AppstoreOutlined,
@@ -26,7 +26,6 @@ import {
   mockWarehouseMovements,
   mockWarehouseCategories,
   type WarehouseItem,
-  type WarehouseMovement,
 } from '@mocks/projectWarehouse'
 import styles from './WarehouseTab.module.css'
 
@@ -34,12 +33,11 @@ interface WarehouseTabProps {
   projectId: string
 }
 
-export function WarehouseTab({ projectId }: WarehouseTabProps) {
+export function WarehouseTab(_props: WarehouseTabProps) {
   const { isDark } = useThemeStore()
   const { unit } = useCurrencyStore()
   const [searchText, setSearchText] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [viewMode, setViewMode] = useState<'table' | 'cards'>('table')
 
   const items = mockProjectWarehouseItems
   const movements = mockWarehouseMovements
