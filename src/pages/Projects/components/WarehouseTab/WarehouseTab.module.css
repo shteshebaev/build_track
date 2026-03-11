@@ -1,0 +1,424 @@
+.container {
+  padding: 0;
+}
+
+/* Summary Cards */
+.summaryRow {
+  margin-bottom: 24px;
+}
+
+.summaryCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.summaryCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.summaryCard.dark {
+  background: #1F2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.summaryCard.warning {
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.summaryIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summaryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summaryValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.dark .summaryValue {
+  color: #F9FAFB;
+}
+
+.summaryLabel {
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.dark .summaryLabel {
+  color: #9CA3AF;
+}
+
+/* Table Card */
+.tableCard {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.tableCard.dark {
+  background: #1F2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #E5E7EB;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dark .tableHeader {
+  border-bottom-color: #374151;
+}
+
+.tableTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.dark .tableTitle {
+  color: #F9FAFB;
+}
+
+.tableActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Items Table */
+.itemsTable :global(.ant-table) {
+  background: transparent;
+}
+
+.itemsTable :global(.ant-table-thead > tr > th) {
+  background: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+  font-weight: 600;
+  color: #6B7280;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.itemsTable.dark :global(.ant-table-thead > tr > th) {
+  background: #111827;
+  border-bottom-color: #374151;
+  color: #9CA3AF;
+}
+
+.itemsTable :global(.ant-table-tbody > tr > td) {
+  border-bottom: 1px solid #E5E7EB;
+  padding: 14px 16px;
+}
+
+.itemsTable.dark :global(.ant-table-tbody > tr > td) {
+  border-bottom-color: #374151;
+}
+
+.itemsTable :global(.ant-table-tbody > tr:hover > td) {
+  background: #F9FAFB;
+}
+
+.itemsTable.dark :global(.ant-table-tbody > tr:hover > td) {
+  background: #111827;
+}
+
+.itemName {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nameText {
+  font-weight: 500;
+  color: #111827;
+}
+
+.dark .nameText {
+  color: #F9FAFB;
+}
+
+.categoryText {
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.dark .categoryText {
+  color: #9CA3AF;
+}
+
+.quantityCell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quantityRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantityValue {
+  font-weight: 600;
+  color: #111827;
+}
+
+.dark .quantityValue {
+  color: #F9FAFB;
+}
+
+.reservedBadge {
+  font-size: 11px;
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.availableText {
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.dark .availableText {
+  color: #9CA3AF;
+}
+
+.price {
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.dark .price {
+  color: #9CA3AF;
+}
+
+.totalValue {
+  font-weight: 600;
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  color: #111827;
+}
+
+.dark .totalValue {
+  color: #F9FAFB;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.dark .location {
+  color: #9CA3AF;
+}
+
+/* Side Cards */
+.sideCard {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.sideCard.dark {
+  background: #1F2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.sideCardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 16px 0;
+}
+
+.dark .sideCardTitle {
+  color: #F9FAFB;
+}
+
+/* Categories */
+.categoriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.categoryItem:hover {
+  background: #F3F4F6;
+}
+
+.dark .categoryItem:hover {
+  background: #111827;
+}
+
+.categoryItem.active {
+  background: rgba(79, 70, 229, 0.1);
+}
+
+.dark .categoryItem.active {
+  background: rgba(79, 70, 229, 0.2);
+}
+
+.categoryIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+}
+
+.dark .categoryIcon {
+  background: #374151;
+  color: #9CA3AF;
+}
+
+.categoryInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.categoryName {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.dark .categoryName {
+  color: #F9FAFB;
+}
+
+.categoryCount {
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.dark .categoryCount {
+  color: #9CA3AF;
+}
+
+.categoryValue {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4F46E5;
+}
+
+.dark .categoryValue {
+  color: #818CF8;
+}
+
+/* Movement Timeline */
+.movementTimeline {
+  padding: 0;
+}
+
+.movementTimeline :global(.ant-timeline-item) {
+  padding-bottom: 16px;
+}
+
+.movementItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.movementHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.movementTag {
+  margin: 0;
+  font-size: 11px;
+}
+
+.movementDate {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+.movementName {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.dark .movementName {
+  color: #F9FAFB;
+}
+
+.movementDetails {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.dark .movementDetails {
+  color: #9CA3AF;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tableHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tableActions {
+    width: 100%;
+  }
+
+  .searchInput {
+    width: 100% !important;
+  }
+}
