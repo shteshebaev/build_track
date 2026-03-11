@@ -21,7 +21,7 @@ import { PageContainer, StatusBadge, EmptyState } from '@shared/ui'
 import { useThemeStore, useCurrencyStore, formatCurrencyCompact } from '@shared/store'
 import { formatDate } from '@shared/lib'
 import { mockProjects } from '@mocks'
-import { EditProjectModal, type EditProjectFormValues, ConstructionTab, EstimatesTab, WarehouseTab } from './components'
+import { EditProjectModal, type EditProjectFormValues, ConstructionTab, EstimatesTab, WarehouseTab, DocumentsTab } from './components'
 import styles from './ProjectDetail.module.css'
 
 export function ProjectDetail() {
@@ -329,12 +329,7 @@ export function ProjectDetail() {
           {t('projects.tabs.documents')}
         </span>
       ),
-      children: (
-        <EmptyState
-          title="Документы"
-          description="Здесь будут отображаться документы проекта"
-        />
-      ),
+      children: <DocumentsTab projectId={project.id} />,
     },
     {
       key: 'analytics',

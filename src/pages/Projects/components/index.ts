@@ -3,3 +3,4 @@ export { EditProjectModal, type EditProjectFormValues } from './EditProjectModal
 export { ConstructionTab } from './ConstructionTab'
 export { EstimatesTab } from './EstimatesTab'
 export { WarehouseTab } from './WarehouseTab'
+export { DocumentsTab } from './DocumentsTab'
