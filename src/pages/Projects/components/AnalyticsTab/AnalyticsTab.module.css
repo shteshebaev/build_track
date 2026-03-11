@@ -1,0 +1,533 @@
+.container {
+  padding: 24px 0;
+}
+
+/* KPI Cards */
+.kpiRow {
+  margin-bottom: 24px;
+}
+
+.kpiCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.kpiCard.dark {
+  background: #1F2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.kpiHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.kpiName {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6B7280;
+  line-height: 1.4;
+}
+
+.kpiCard.dark .kpiName {
+  color: #9CA3AF;
+}
+
+.kpiTrend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trendUp {
+  font-size: 12px;
+  font-weight: 600;
+  color: #10B981;
+}
+
+.trendDown {
+  font-size: 12px;
+  font-weight: 600;
+  color: #EF4444;
+}
+
+.kpiValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.kpiCard.dark .kpiValue {
+  color: #F9FAFB;
+}
+
+.kpiUnit {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B7280;
+}
+
+.kpiCard.dark .kpiUnit {
+  color: #9CA3AF;
+}
+
+.kpiTarget {
+  display: block;
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 8px;
+}
+
+/* Chart Cards */
+.chartCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.chartCard.dark {
+  background: #1F2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chartTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chartCard.dark .chartTitle {
+  color: #F9FAFB;
+}
+
+.chartSubtitle {
+  font-size: 12px;
+  color: #6B7280;
+  margin: 4px 0 0;
+}
+
+.chartCard.dark .chartSubtitle {
+  color: #9CA3AF;
+}
+
+.chartLegend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.chartCard.dark .legendItem {
+  color: #9CA3AF;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Bar Chart */
+.chartArea {
+  height: 200px;
+  margin-bottom: 16px;
+}
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  gap: 8px;
+}
+
+.barGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: calc(100% - 24px);
+  flex: 1;
+}
+
+.bar {
+  width: 12px;
+  border-radius: 4px 4px 0 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.bar:hover {
+  opacity: 0.8;
+}
+
+.barLabel {
+  font-size: 10px;
+  color: #6B7280;
+  margin-top: 8px;
+}
+
+.chartCard.dark .barLabel {
+  color: #9CA3AF;
+}
+
+.chartFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.varianceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.varianceCard.positive {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.varianceCard.negative {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.varianceLabel {
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.varianceValue {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.varianceCard.positive .varianceValue {
+  color: #10B981;
+}
+
+.varianceCard.negative .varianceValue {
+  color: #EF4444;
+}
+
+/* Line Chart */
+.lineChart {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.lineSvg {
+  width: 100%;
+  height: 150px;
+}
+
+/* Pie Chart */
+.pieChartWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pieChart {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #E5E7EB;
+}
+
+.chartCard.dark .pieChart {
+  background: #374151;
+}
+
+.pieSlice {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.pieCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartCard.dark .pieCenter {
+  background: #1F2937;
+}
+
+.pieCenterValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.chartCard.dark .pieCenterValue {
+  color: #F9FAFB;
+}
+
+.pieCenterLabel {
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.pieList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pieListItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pieDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.pieLabel {
+  flex: 1;
+  font-size: 14px;
+  color: #374151;
+}
+
+.chartCard.dark .pieLabel {
+  color: #D1D5DB;
+}
+
+.pieValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.chartCard.dark .pieValue {
+  color: #F9FAFB;
+}
+
+/* Resource List */
+.resourceList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resourceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resourceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resourceName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.chartCard.dark .resourceName {
+  color: #D1D5DB;
+}
+
+.resourceValues {
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.chartCard.dark .resourceValues {
+  color: #9CA3AF;
+}
+
+.resourcePercent {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+/* Risk Table */
+.riskTable {
+  margin-top: -10px;
+}
+
+.riskTable :global(.ant-table) {
+  background: transparent !important;
+}
+
+.riskTable :global(.ant-table-thead > tr > th) {
+  background: transparent !important;
+  border-bottom: 1px solid #E5E7EB;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.riskTable.dark :global(.ant-table-thead > tr > th) {
+  border-bottom-color: #374151;
+  color: #9CA3AF;
+}
+
+.riskTable :global(.ant-table-tbody > tr > td) {
+  border-bottom: 1px solid #F3F4F6;
+  padding: 10px 12px;
+}
+
+.riskTable.dark :global(.ant-table-tbody > tr > td) {
+  border-bottom-color: #374151;
+}
+
+.riskTable :global(.ant-table-tbody > tr:hover > td) {
+  background: rgba(79, 70, 229, 0.05) !important;
+}
+
+.riskTable.dark :global(.ant-table-tbody > tr:hover > td) {
+  background: rgba(79, 70, 229, 0.1) !important;
+}
+
+.riskCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.riskTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.riskTable.dark .riskTitle {
+  color: #F9FAFB;
+}
+
+.riskCategory {
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.riskTable.dark .riskCategory {
+  color: #9CA3AF;
+}
+
+/* Stacked Bar Chart */
+.stackedChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 200px;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.stackedBarGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.stackedBar {
+  width: 100%;
+  max-width: 40px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.stackedBar > div {
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.stackedBar > div:hover {
+  opacity: 0.8;
+}
+
+.stackedLabel {
+  font-size: 11px;
+  color: #6B7280;
+  margin-top: 8px;
+}
+
+.chartCard.dark .stackedLabel {
+  color: #9CA3AF;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chartHeader {
+    flex-direction: column;
+  }
+
+  .chartLegend {
+    margin-top: 8px;
+  }
+
+  .kpiValue {
+    font-size: 24px;
+  }
+
+  .bar {
+    width: 8px;
+  }
+
+  .stackedBar {
+    max-width: 28px;
+  }
+}
